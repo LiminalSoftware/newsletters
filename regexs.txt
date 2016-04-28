@@ -1,0 +1,31 @@
+HTML-decode font-family style rules
+(?<=font-family:)&quot;|&quot;(?=,|;)|(?<=,)&quot;
+'
+
+Replace double quotes with double curlies
+(?<=style=)"((([^:\s]+)\s*?:\s*?([^;\n"]+)\s?;?\s?)+)"
+{{$1}}
+
+Replace semi-colons with commas
+(?<=\{|;)([^\{:\n]+)\s*?:\s*?([^';}]+)\s?;?\s?
+$1: $2, //-- trailing space!!
+
+Quote prop names with dashes
+(?<=\{|, )([^:\s\{\}]+)-([^:\s\{\}]+)
+'$1-$2'
+
+Quote prop values
+(?<=: )(.+?)(?=, )
+'$1'
+
+Remove unnecessary commas
+(?<=\{\{)(.*),\s+?(?=\}\})
+$1
+
+Fix font-family props
+(?<=font-family')(\s*?:\s*)(.+?);
+$1"$2", //-- trailing space!!
+
+Convert snake-case to camel-case //-- must run multiple times to handle thins with multiple dashes
+(?<=')([^:,\n]+)-([^:,\n])([^:,\n]+)?(?=':)
+$1\U$2\L$3
