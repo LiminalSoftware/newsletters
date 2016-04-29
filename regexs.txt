@@ -43,3 +43,7 @@ $1"$2", //-- trailing space!!
 Convert snake-case to camel-case //-- must run multiple times to handle thins with multiple dashes
 (?<=')([^:,\n]+)-([^:,\n])([^:,\n]+)?(?=':)
 $1\U$2\L$3
+
+Fix align attributes
+(?<=\s)align(?==['"])
+data-align

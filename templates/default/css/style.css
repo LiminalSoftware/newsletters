@@ -4,14 +4,30 @@ table table {max-width:640px;}
 img {outline:0;}
 a img {border:none;}
 @-ms-viewport{ width: device-width;}
-body {
-    background-color: #ffffff;
+[data-align='center'] {
+    text-align: center;
+}
+[data-align='right'] {
+    text-align: right;
+}
+[data-align='left'] {
+    text-align: left;
+}
+[data-bgcolor='ffffff'] {
+    background-color: #fff;
+}
+[data-bgcolor='ff5041'] {
+    background-color: #ff5041;
+}
+#myApp {
+    background-color:#464646;margin:0;padding:0;width:100%;
+    /*background-color: #ffffff;*/
     -webkit-text-size-adjust: none !important;
     -ms-text-size-adjust: none !important;
 }
 @media screen and (max-width: 599px) {
     *[class=resize300] {width:300px!important;}
-    *[class=mobile] {width:10px;!important;}
+    *[class=mobile] {width:10px!important;}
     *[class=nomob] {display:none!important;}
     *[class=font11]{font-size:11px!important;}
     *[class=font12]{font-size:12px!important;}
@@ -28,7 +44,7 @@ body {
         float: left!important;
     }
     td[class=claim] {
-        background-image:url(img/teaser_300.jpg);
+        background-image:url(../img/teaser_300.jpg);
         height:70px;
     }
     img{max-width:300px;}
