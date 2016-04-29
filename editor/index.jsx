@@ -4,8 +4,9 @@ import ReactDOM from 'react-dom';
 //import * as bs from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import FormGroup from 'react-bootstrap/lib/FormGroup'
-import Old from '../templates/old.jsx'
+//import Old from '../templates/old.jsx'
 //import Test from '../templates/test.jsx'
+import Default from '../templates/default/index.jsx'
 
 let MyImage = React.createClass({
   getInitialState() {
@@ -45,7 +46,7 @@ let TextArea = React.createClass({
         {/*<div dangerouslySetInnerHTML={{__html: this.state.value}}></div>*/}
         {/*<div dangerouslySetInnerHTML={{__html: require('html!../templates/old.html')}}></div>*/}
         {/*<Test />*/}
-        <Old />
+        <Default />
       </div>
     );
   }
@@ -57,7 +58,7 @@ export class App extends React.Component {
       <div>
         <div className="container">
           <MyImage src="http://placehold.it/300x300" alt="test" />
-          <TextArea />
+          <Default />
         </div>
       </div>
     );

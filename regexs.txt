@@ -1,17 +1,31 @@
+Fix <br>s
+<br>
+<br />
+
+Fix <img>s
+(?<=<img)([^>]+?)(?<!\/)>
+$1 />
+
 HTML-decode font-family style rules
 (?<=font-family:)&quot;|&quot;(?=,|;)|(?<=,)&quot;
 '
 
 Replace double quotes with double curlies
-(?<=style=)"((([^:\s]+)\s*?:\s*?([^;\n"]+)\s?;?\s?)+)"
+(?<=style=)["']((([^:\s]+)\s*?:\s*?([^;\n"']+)\s?;?\s?)+)["']
 {{$1}}
 
+
+Quote object values
+(?<!(?:mailto)|(?:http)|(?:https)|\d):\s*?(.+?)\s*?(;|(?:\}\}))
+: '$1'$2
+
+
 Replace semi-colons with commas
-(?<=\{|;)([^\{:\n]+)\s*?:\s*?([^';}]+)\s?;?\s?
+(?<=\{|;)([^\{:\n]+)\s*?:\s*?([^;}]+)\s?;?\s?
 $1: $2, //-- trailing space!!
 
 Quote prop names with dashes
-(?<=\{|, )([^:\s\{\}]+)-([^:\s\{\}]+)
+(?<=\{|, )([^'":\s\{\}]+)-([^:\s\{\}]+)
 '$1-$2'
 
 Quote prop values

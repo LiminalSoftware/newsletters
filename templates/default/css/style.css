@@ -1,0 +1,35 @@
+body {-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;margin:0 !important; padding:0 !important;}
+table td { border-collapse: collapse;}
+table table {max-width:640px;}
+img {outline:0;}
+a img {border:none;}
+@-ms-viewport{ width: device-width;}
+body {
+    background-color: #ffffff;
+    -webkit-text-size-adjust: none !important;
+    -ms-text-size-adjust: none !important;
+}
+@media screen and (max-width: 599px) {
+    *[class=resize300] {width:300px!important;}
+    *[class=mobile] {width:10px;!important;}
+    *[class=nomob] {display:none!important;}
+    *[class=font11]{font-size:11px!important;}
+    *[class=font12]{font-size:12px!important;}
+    *[class=font13]{font-size:13px!important;}
+    *[class=font13]{font-size:13px!important;}
+    *[class=font14]{font-size:14px!important;}
+    *[class=font16]{font-size:16px!important;}
+    *[class=font17]{font-size:17px!important;}
+    *[class=font26]{font-size:26px!important;}
+    *[class=width32] {width:32px!important;}
+    td[class=center] {text-align:center!important;}
+    td[class=emailcolsplit300] {
+        width: 300px!important;
+        float: left!important;
+    }
+    td[class=claim] {
+        background-image:url(img/teaser_300.jpg);
+        height:70px;
+    }
+    img{max-width:300px;}
+}
