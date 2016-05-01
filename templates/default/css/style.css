@@ -155,9 +155,12 @@ body {
     text-decoration: underline;
 }
 
-.entry > img {
+.entry > .image {
     float:       right;
     margin-left: 20px;
+
+    width: 280px;
+    height: 200px;
 }
 
 #footer .copyright {

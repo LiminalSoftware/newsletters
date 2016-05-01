@@ -2,6 +2,7 @@ import React from 'react';
 import Title from './components/title.jsx';
 import EditableText from './components/editableText.jsx';
 import EditableLink from './components/editableLink.jsx';
+import EditableImage from './components/editableImage.jsx';
 require('./css/style.css');
 
 export default React.createClass({
@@ -49,7 +50,7 @@ export default React.createClass({
               </p>
             </div>
             <div className="entry">
-              <img src="/templates/default/img/cocacola.jpg" alt="coca-cola"/>
+              <EditableImage src="/templates/default/img/cocacola.jpg" alt="coca-cola"/>
               <div className="tag">
                 <EditableText placeholder="Hotspot" />
               </div>
@@ -65,31 +66,38 @@ export default React.createClass({
               </p>
             </div>
             <div className="entry">
-              <img src="/templates/default/img/3ddrucker.jpg" alt="3d drucker"/>
+              <EditableImage src="/templates/default/img/3ddrucker.jpg" alt="3d drucker"/>
               <div className="tag">
-                Extern
+                <EditableText placeholder="Extern" />
               </div>
               <div className="title">
-                <a className="highlight-text" href="#">Katjes geht in die Zukunft: Fruchtgummis aus dem 3D-Drucker</a>
+                <EditableLink text="Katjes geht in die Zukunft: Fruchtgummis aus dem 3D-Drucker" href="#" />
+
               </div>
               <p>
-                Unser "süsser" Location Tipp der Woche für Berlin: Die Magic Candy Factory in Berlin Mitte.
+                <EditableText placeholder="
+                Unser 'süsser' Location Tipp der Woche für Berlin: Die Magic Candy Factory in Berlin Mitte.
                 Gestalten Sie Ihre Weingummis am ersten und einzigen 3D Drucker in Deutschland. Essen dürfen Sie die
-                Süßigkeiten auch. Na dann Guten Appetit! <a href="#">http://ow.ly/3yaq9H</a>
+                Süßigkeiten auch. Na dann Guten Appetit! <a href='#'>http://ow.ly/3yaq9H</a>
+                "/>
               </p>
             </div>
+
+
             <div className="entry">
-              <img src="/templates/default/img/kompetenztage.jpg" alt="kompetenztage"/>
+              <EditableImage src="/templates/default/img/kompetenztage.jpg" alt="kompetenztage"/>
               <div className="tag">
-                Inside
+                <EditableText placeholder="Inside" />
               </div>
               <div className="title">
-                <a className="highlight-text" href="#">Kompetenztage der tw tagungswirtschaft mit BEEFTEA</a>
+                <EditableLink text="Kompetenztage der tw tagungswirtschaft mit BEEFTEA" href="#" />
               </div>
               <p>
+                <EditableText placeholder="
                 Unter diesem Thema stand der Vortrag unseres Geschäftsführers Andreas Grunszky bei den„Kompetenztagen
                 der tw tagungswirtschaft und tp tagungsplaner.de in München.Diese Veranstaltung beleuchtete ...
-                <a href="#">weiterlesen</a>
+                <a href='#'>weiterlesen</a>
+                "/>
               </p>
             </div>
             <div id="footer">

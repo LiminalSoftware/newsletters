@@ -14,7 +14,15 @@ export default React.createClass({
   render () {
     return (
       <div id="title-container">
-        trend<span className="highlight-text">flash</span> <EditableText
+        <EditableText
+          placeholder="trend"
+          expandWidth={10}
+        /><span className="highlight-text">
+        <EditableText
+          placeholder="flash"
+          expandWidth={10}
+        />
+      </span> <EditableText
         placeholder={this.state.date}
         expandWidth={10}
       />
