@@ -55,7 +55,7 @@ export default React.createClass({
             position: 'relative',
             zIndex: 1
           }}
-          value={this.state.text}
+          value={this.state.href}
           onChange={this.handleEdit('href')}
         />
         <input
@@ -70,7 +70,7 @@ export default React.createClass({
             position: 'relative',
             zIndex: 1
           }}
-          value={this.state.text}
+          value={this.state.altText}
           onChange={this.handleEdit('altText')}
         />
         <input
