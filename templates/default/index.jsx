@@ -1,4 +1,7 @@
 import React from 'react';
+import Title from './components/title.jsx';
+import EditableText from './components/editableText.jsx';
+import EditableLink from './components/editableLink.jsx';
 require('./css/style.css');
 
 export default React.createClass({
@@ -32,30 +35,33 @@ export default React.createClass({
             </div>
           </div>
           <div id="body">
-            <div id="title-container">
-              trend<span className="highlight-text">flash</span> 09/13
-            </div>
+            <Title />
             <div id="intro">
               <p className="greeting">
-                Hallo Grunszky,
+                <EditableText placeholder="Hallo Grunszky," expandWidth={10}/>
               </p>
               <p>
-                Us ineo, vel loquor, hic sed, Viva tam. Ico explorator mos, Expello hinc hac talio,
-                mensa plures utor to tutamen eia Extundo sentus ita Novus.
+                <EditableText
+                  placeholder="
+                  Us ineo, vel loquor, hic sed, Viva tam. Ico explorator mos, Expello hinc hac talio, mensa plures utor
+                  to tutamen eia Extundo sentus ita Novus.
+                  "/>
               </p>
             </div>
             <div className="entry">
               <img src="/templates/default/img/cocacola.jpg" alt="coca-cola"/>
               <div className="tag">
-                Hotspot
+                <EditableText placeholder="Hotspot" />
               </div>
               <div className="title">
-                <a className="highlight-text" href="#">Coca-Cola Tag mit BEEFTEA live GmbH</a>
+                <EditableLink text="Coca-Cola Tag mit BEEFTEA live GmbH" href="#" />
               </div>
               <p>
+                <EditableText placeholder="
                 BAm 21. Juni lud Coca-Cola seine Kunden und Mitarbeiter zum 24. Coca-Cola Tag in den Europa-Park Rust
                 ein. 9.000 Gäste erlebten einen ereignisreichen Tag in Deutschlands größtem Freizeitpark.Bereits um
-                08:00 Uhr und somit exklusiv für die &hellip;<a href="#">weiterlesen</a>
+                08:00 Uhr und somit exklusiv für die &hellip;<a href='#'>weiterlesen</a>
+                "/>
               </p>
             </div>
             <div className="entry">

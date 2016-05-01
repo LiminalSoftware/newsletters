@@ -66,6 +66,3 @@ export class App extends React.Component {
 }
 
 ReactDOM.render(<App/>, document.querySelector("#myApp"));
-
-console.log('testing 123');
-
