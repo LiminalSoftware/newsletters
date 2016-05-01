@@ -21,7 +21,7 @@ export default React.createClass({
               </div>
             </div>
             <div id="logo">
-              <img src="/templates/default/img/logo.png" alt="beeftea-logo"/>
+              <EditableImage src="/templates/default/img/logo.png" alt="beeftea-logo"/>
             </div>
             <div id="menu">
               <div className="item">Home</div>
@@ -32,7 +32,7 @@ export default React.createClass({
               <div className="item">Kontakt</div>
             </div>
             <div id="splash">
-              <img src="/templates/default/img/teaser.jpg" alt="teaser"/>
+              <EditableImage src="/templates/default/img/teaser.jpg" alt="teaser"/>
             </div>
           </div>
           <div id="body">
