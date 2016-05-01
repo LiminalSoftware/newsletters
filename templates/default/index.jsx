@@ -1,5 +1,5 @@
 import React from 'react';
-require('./css/new-style.css');
+require('./css/style.css');
 
 export default React.createClass({
   render () {
