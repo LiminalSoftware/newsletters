@@ -12,12 +12,12 @@ export default React.createClass({
         <div id="content">
           <div id="header">
             <div id="social-links">
-              <a id="online-version" href="#">Online-Version</a>
+              <EditableLink id="online-version" text="Online-Version" href="#"></EditableLink>
               <div className="icon-container">
-                <a className="facebook" href="#"></a>
-                <a className="youtube" href="#"></a>
-                <a className="gplus" href="#"></a>
-                <a className="twitter" href="#"></a>
+                <EditableImage src="/templates/default/img/fb.png" href="#"></EditableImage>
+                <EditableImage src="/templates/default/img/youtube.png" href="#"></EditableImage>
+                <EditableImage src="/templates/default/img/gplus.png" href="#"></EditableImage>
+                <EditableImage src="/templates/default/img/twitter.png" href="#"></EditableImage>
               </div>
             </div>
             <div id="logo">
@@ -49,13 +49,16 @@ export default React.createClass({
                   "/>
               </p>
             </div>
+
+            <div className="divider"></div>
+
             <div className="entry">
               <EditableImage src="/templates/default/img/cocacola.jpg" alt="coca-cola"/>
               <div className="tag">
-                <EditableText placeholder="Hotspot" />
+                #<EditableText placeholder="Hotspot"/>
               </div>
               <div className="title">
-                <EditableLink text="Coca-Cola Tag mit BEEFTEA live GmbH" href="#" />
+                <EditableLink text="Coca-Cola Tag mit BEEFTEA live GmbH" href="#"/>
               </div>
               <p>
                 <EditableText placeholder="
@@ -65,13 +68,16 @@ export default React.createClass({
                 "/>
               </p>
             </div>
+
+            <div className="divider"></div>
+
             <div className="entry">
               <EditableImage src="/templates/default/img/3ddrucker.jpg" alt="3d drucker"/>
               <div className="tag">
-                <EditableText placeholder="Extern" />
+                #<EditableText placeholder="Extern"/>
               </div>
               <div className="title">
-                <EditableLink text="Katjes geht in die Zukunft: Fruchtgummis aus dem 3D-Drucker" href="#" />
+                <EditableLink text="Katjes geht in die Zukunft: Fruchtgummis aus dem 3D-Drucker" href="#"/>
 
               </div>
               <p>
@@ -83,14 +89,15 @@ export default React.createClass({
               </p>
             </div>
 
+            <div className="divider"></div>
 
             <div className="entry">
               <EditableImage src="/templates/default/img/kompetenztage.jpg" alt="kompetenztage"/>
               <div className="tag">
-                <EditableText placeholder="Inside" />
+                #<EditableText placeholder="Inside"/>
               </div>
               <div className="title">
-                <EditableLink text="Kompetenztage der tw tagungswirtschaft mit BEEFTEA" href="#" />
+                <EditableLink text="Kompetenztage der tw tagungswirtschaft mit BEEFTEA" href="#"/>
               </div>
               <p>
                 <EditableText placeholder="
@@ -100,6 +107,9 @@ export default React.createClass({
                 "/>
               </p>
             </div>
+
+            <div className="divider"></div>
+
             <div id="footer">
               <div className="copyright">
                 <div className="highlight-text">&copy; 2014 BEEFTEA group</div>
@@ -120,7 +130,7 @@ export default React.createClass({
                 <a href="mailto:berlin@beeftea.de">berlin@beeftea.de</a> | <a href="http://www.beeftea.de">www.beeftea.de</a>
               </div>
               <div id="unsubscribe">
-                Wenn Sie unseren Newsletter nicht mehr erhalten möchten, melden Sie sich bitte <a href="#">hier ab</a>.
+                Wenn Sie unseren Newsletter nicht mehr erhalten möchten, melden Sie sich bitte <EditableLink text="heir ab" />.
               </div>
             </div>
           </div>

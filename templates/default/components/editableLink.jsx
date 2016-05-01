@@ -3,7 +3,7 @@ import React from 'react';
 export default React.createClass({
   getInitialState () {
     return {
-      text        : this.props.text || 'link text here',
+      text        : this.props.text || 'link text here...',
       href        : this.props.href || '#',
       editing     : false,
       width       : '',
@@ -20,7 +20,8 @@ export default React.createClass({
   static () {
     return (
       <a
-        className="highlight-text"
+        id={this.props.id}
+        className={`highlight-text ${this.props.className}`}
         href={this.state.href}
         ref="text"
         onClick={this.toggleEditor}

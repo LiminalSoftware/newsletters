@@ -7,7 +7,7 @@ export class App extends React.Component {
   render() {
     return (
       <div>
-        <StickyHeader rootSelector="#content-container" />
+        <StickyHeader rootSelector="#content-container"/>
         <Default />
       </div>
     );

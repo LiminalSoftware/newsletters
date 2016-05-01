@@ -1,11 +1,9 @@
-body {
-    font-family: arial, sans-serif;
-    line-height: 16px;
-}
-
 #content-container {
     width:            100%;
     background-color: rgb(70, 70, 70);
+    font-family:      arial, sans-serif;
+    line-height:      16px;
+    font-size:        14px;
 }
 
 #content {
@@ -31,39 +29,15 @@ body {
     margin:   10px 20px;
 }
 
+#social-links img {
+    padding: 2px;
+}
+
 #social-links > .icon-container,
 #title-container {
     position: absolute;
     right:    0;
     top:      0;
-}
-
-#social-links .facebook,
-#social-links .youtube,
-#social-links .gplus,
-#social-links .twitter {
-    display:             inline-block;
-    width:               17px;
-    height:              17px;
-    padding:             11px;
-    background-repeat:   no-repeat;
-    background-position: 2px 2px;
-}
-
-#social-links .facebook {
-    background-image: url(../img/fb.png);
-}
-
-#social-links .youtube {
-    background-image: url(../img/youtube.png);
-}
-
-#social-links .gplus {
-    background-image: url(../img/gplus.png);
-}
-
-#social-links .twitter {
-    background-image: url(../img/twitter.png);
 }
 
 #logo {
@@ -108,8 +82,7 @@ body {
     font-size: 16px;
 }
 
-#body > .entry::before,
-#footer::before {
+.divider {
     display:        block;
     content:        '';
     width:          600px;
@@ -120,8 +93,7 @@ body {
     pointer-events: none;
 }
 
-.tag,
-.tag::before {
+.tag {
     color:            rgb(255, 255, 255);
     background-color: rgb(255, 80, 65);
     text-transform:   uppercase;
@@ -133,12 +105,8 @@ body {
     padding: 3px;
 }
 
-.tag::before {
-    content: '#'
-}
-
 .entry {
-    min-height: 250px;
+    min-height: 190px;
 }
 
 .entry .title {
@@ -159,8 +127,8 @@ body {
     float:       right;
     margin-left: 20px;
 
-    width: 280px;
-    height: 200px;
+    width:       280px;
+    height:      200px;
 }
 
 #footer .copyright {
@@ -174,19 +142,19 @@ body {
 #footer-left,
 #footer-right {
     display: inline-block;
-    margin: 20px 0;
-    width: 290px;
+    margin:  20px 0;
+    width:   290px;
 }
 
 #footer-left {
     margin-right: 20px;
-    text-align: right;
+    text-align:   right;
 }
 
 #footer #unsubscribe {
-    font-size: 11px;
-    color:     rgb(135, 135, 140);
-    text-align: center;
+    font-size:      11px;
+    color:          rgb(135, 135, 140);
+    text-align:     center;
     padding-bottom: 20px;
 }
 
@@ -201,7 +169,7 @@ body {
  */
 
 .highlight-text {
-    color: rgb(255, 80, 65) !important;
+    color: rgb(255, 80, 65);
 }
 
 .clear {
