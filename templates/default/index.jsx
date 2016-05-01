@@ -62,9 +62,9 @@ export default React.createClass({
               </div>
               <p>
                 <EditableText placeholder="
-                BAm 21. Juni lud Coca-Cola seine Kunden und Mitarbeiter zum 24. Coca-Cola Tag in den Europa-Park Rust
-                ein. 9.000 Gäste erlebten einen ereignisreichen Tag in Deutschlands größtem Freizeitpark.Bereits um
-                08:00 Uhr und somit exklusiv für die &hellip;<a href='#'>weiterlesen</a>
+                  BAm 21. Juni lud Coca-Cola seine Kunden und Mitarbeiter zum 24. Coca-Cola Tag in den Europa-Park Rust
+                  ein. 9.000 G&amp;#228;ste erlebten einen ereignisreichen Tag in Deutschlands gr&amp;#246;&amp;#223;tem Freizeitpark.Bereits um
+                  08:00 Uhr und somit exklusiv f&amp;#252;r die &amp;hellip; <a href='#'>weiterlesen</a>
                 "/>
               </p>
             </div>
@@ -82,9 +82,9 @@ export default React.createClass({
               </div>
               <p>
                 <EditableText placeholder="
-                Unser 'süsser' Location Tipp der Woche für Berlin: Die Magic Candy Factory in Berlin Mitte.
-                Gestalten Sie Ihre Weingummis am ersten und einzigen 3D Drucker in Deutschland. Essen dürfen Sie die
-                Süßigkeiten auch. Na dann Guten Appetit! <a href='#'>http://ow.ly/3yaq9H</a>
+                  Unser &amp;#39;s&amp;#252;sser&amp;#39; Location Tipp der Woche f&amp;#252;r Berlin: Die Magic Candy Factory in Berlin Mitte.
+                  Gestalten Sie Ihre Weingummis am ersten und einzigen 3D Drucker in Deutschland. Essen d&amp;#252;rfen Sie die
+                  S&amp;#252;&amp;#223;igkeiten auch. Na dann Guten Appetit! <a href='#'>http://ow.ly/3yaq9H</a>
                 "/>
               </p>
             </div>
@@ -101,9 +101,9 @@ export default React.createClass({
               </div>
               <p>
                 <EditableText placeholder="
-                Unter diesem Thema stand der Vortrag unseres Geschäftsführers Andreas Grunszky bei den„Kompetenztagen
-                der tw tagungswirtschaft und tp tagungsplaner.de in München.Diese Veranstaltung beleuchtete ...
-                <a href='#'>weiterlesen</a>
+                  Unter diesem Thema stand der Vortrag unseres Gesch&amp;#228;ftsf&amp;#252;hrers Andreas Grunszky bei den„Kompetenztagen
+                  der tw tagungswirtschaft und tp tagungsplaner.de in M&amp;#252;nchen.Diese Veranstaltung beleuchtete &amp;hellip;
+                  <a href='#'>weiterlesen</a>
                 "/>
               </p>
             </div>
@@ -112,11 +112,11 @@ export default React.createClass({
 
             <div id="footer">
               <div className="copyright">
-                <div className="highlight-text">&copy; 2014 BEEFTEA group</div>
+                <div className="highlight-text">&amp;copy; 2014 BEEFTEA group</div>
                 people & brand communications GmbH
               </div>
               <div id="footer-left">
-                Kreuzbergstraße 30 | D-10965 Berlin
+                Kreuzbergstra&amp;#223;e 30 | D-10965 Berlin
                 <br />
                 T 030 26 93 92-3 | F 030 26 93 92-40
                 <br />
@@ -130,7 +130,8 @@ export default React.createClass({
                 <a href="mailto:berlin@beeftea.de">berlin@beeftea.de</a> | <a href="http://www.beeftea.de">www.beeftea.de</a>
               </div>
               <div id="unsubscribe">
-                Wenn Sie unseren Newsletter nicht mehr erhalten möchten, melden Sie sich bitte <EditableLink text="heir ab" />.
+                Wenn Sie unseren Newsletter nicht mehr erhalten m&amp;#246;chten, melden Sie sich bitte <EditableLink
+                text="heir ab"/>.
               </div>
             </div>
           </div>

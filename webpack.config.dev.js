@@ -1,15 +1,15 @@
 var webpack = require('webpack');
 var path = require('path');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: [
+    'webpack-dev-server/client?http://0.0.0.0:8080', // WebpackDevServer host and port
+    'webpack/hot/only-dev-server',
     './editor/index.jsx' // Your appʼs entry point
   ],
   devtool: process.env.WEBPACK_DEVTOOL || 'source-map',
   output: {
-    path: path.join(__dirname, './dist'),
+    path: path.join(__dirname, 'editor'),
     filename: 'bundle.js'
   },
   resolve: {
@@ -61,18 +61,13 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    contentBase: "./",
+    noInfo: true, //  --no-info option
+    hot: true,
+    inline: true
+  },
   plugins: [
-    new webpack.NoErrorsPlugin(),
-    new CleanWebpackPlugin(['dist']),
-    new CopyWebpackPlugin([
-      { from: 'editor/index.html', to: 'index.html' },
-      {
-        from: 'editor/css/bootstrap.min.css', to: 'css'
-      },
-      {
-        from: 'templates/default/img',
-        to: 'templates/default/img'
-      }
-    ])
+    new webpack.NoErrorsPlugin()
   ]
 };
