@@ -13,7 +13,7 @@ export default React.createClass({
       width       : '',
       height      : '',
       expandWidth : this.props.expandWidth || 0,
-      expandHeight: this.props.expandHeight || 10
+      expandHeight: this.props.expandHeight || 0
     }
     ;
 

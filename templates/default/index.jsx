@@ -24,12 +24,12 @@ export default React.createClass({
               <EditableImage src="templates/default/img/logo.png" alt="beeftea-logo"/>
             </div>
             <div id="menu">
-              <div className="item">Home</div>
-              <div className="item">Units</div>
-              <div className="item">Leistungen</div>
-              <div className="item">Jobs</div>
-              <div className="item">Kalender</div>
-              <div className="item">Kontakt</div>
+              <a className="item" target="_blank" href="http://beeftea.de/">Home</a>
+              <a className="item" target="_blank" href="http://beeftea.de/beeftea-group-vier-units-fur-eine-gemeinsame-sache/">Units</a>
+              <a className="item" target="_blank" href="http://beeftea.de/leistungen/">Leistengen</a>
+              <a className="item" target="_blank" href="http://beeftea.de/jobs/">Jobs</a>
+              <a className="item" target="_blank" href="http://beeftea.de/meeting/">Kalender</a>
+              <a className="item" target="_blank" href="http://beeftea.de/kontakt/">Kontakt</a>
             </div>
             <div id="splash">
               <EditableImage src="templates/default/img/640x150.png" alt="teaser"/>
@@ -86,7 +86,7 @@ export default React.createClass({
 
             <div id="footer">
               <div className="copyright">
-                <div className="highlight-text">{unescape('%A9')} 2014 BEEFTEA group</div>
+                <div className="highlight-text">© 2014 BEEFTEA group</div>
                 people & brand communications GmbH
               </div>
               <div id="footer-left">
