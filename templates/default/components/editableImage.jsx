@@ -1,10 +1,13 @@
 import React from 'react';
+//import Draft from '../../../editor/services/draftService';
+
+//let draft = new Draft();
 
 export default React.createClass({
   getInitialState () {
-    return {
+    let defaults = {
       dataUri     : this.download(this.props.src),
-      href        : this.props.href || '#',
+      href        : this.props.href || '',
       altText     : this.props.alt || '',
       editing     : false,
       width       : '',
@@ -12,16 +15,21 @@ export default React.createClass({
       expandWidth : this.props.expandWidth || 0,
       expandHeight: this.props.expandHeight || 10
     }
+    ;
+
+    return defaults;
+    //return draft.isAvailable ? draft.store : defaults;
   },
 
   render () {
+    //draft.update(this.state);
     return this.state.editing ? this.editor() : this.static();
   },
 
   static () {
     return (
       <a
-        href={this.state.href}
+        href={this.state.href || '#'}
         className="image"
       >
         <img

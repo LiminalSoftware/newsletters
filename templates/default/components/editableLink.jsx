@@ -4,12 +4,12 @@ export default React.createClass({
   getInitialState () {
     return {
       text        : this.props.text || 'link text here...',
-      href        : this.props.href || '#',
+      href        : this.props.href || '',
       editing     : false,
       width       : '',
       height      : '',
-      expandWidth : this.props.expandWidth || 0,
-      expandHeight: this.props.expandHeight || 10
+      expandWidth : Number(this.props.expandWidth) || 0,
+      expandHeight: Number(this.props.expandHeight) || 10
     }
   },
 
@@ -22,13 +22,12 @@ export default React.createClass({
       <a
         id={this.props.id}
         className={`highlight-text ${this.props.className}`}
-        href={this.state.href}
+        href={this.state.href || '#'}
         ref="text"
         onClick={this.toggleEditor}
-        dangerouslySetInnerHTML={{__html:
-          this.state.editing ? this.editor() : this.state.text
-        }}
-      ></a>
+      >
+        {this.state.editing ? this.editor() : this.state.text}
+      </a>
     )
   },
 

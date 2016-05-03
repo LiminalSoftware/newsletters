@@ -1,14 +1,17 @@
 import React from 'react';
+//import * as marked from 'marked';
+let marked = require('marked');
 
 export default React.createClass({
   getInitialState () {
     return {
-      text   : this.props.placeholder,
-      editing: false,
-      width  : '',
-      height : '',
-      expandWidth: this.props.expandWidth || 0,
-      expandHeight: this.props.expandHeight || 10
+      text        : this.props.text || '',
+      editing     : false,
+      width       : '',
+      height      : '',
+      expandWidth : Number(this.props.expandWidth) || 0,
+      expandHeight: Number(this.props.expandHeight) || 10,
+      markdown    : this.props.markdown === 'false' ? false : true
     }
   },
 
@@ -17,15 +20,25 @@ export default React.createClass({
   },
 
   static () {
-    return (
-      <span
-        ref="text"
-        onClick={this.toggleEditor}
-        dangerouslySetInnerHTML={{__html:
-          this.state.editing ? this.editor() : this.state.text
-        }}
-      ></span>
-    )
+    if (this.state.markdown || this.state.editing) {
+      return (
+        <div
+          ref="text"
+          onClick={this.toggleEditor}
+          dangerouslySetInnerHTML={{__html:
+            this.state.editing ? this.editor() : marked(this.state.text)
+          }}
+        ></div>
+      )
+    } else {
+      return ( <span
+          ref="text"
+          onClick={this.toggleEditor}
+        >
+          {this.state.text}
+        </span>
+      )
+    }
   },
 
   editor () {
