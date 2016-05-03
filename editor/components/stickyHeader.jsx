@@ -86,7 +86,7 @@ export default React.createClass({
         ;
 
       that.setState({
-        copyText     : text,
+        copyText     : that.wrap(text),
         dialogOpacity: 1
       }, () => {
         setTimeout(() => {
@@ -98,5 +98,12 @@ export default React.createClass({
       //let result = document.execCommand('copy');
       //console.log(result);
     })
+  },
+
+  wrap (text) {
+    let wrapper = require('../../templates/default/wrapper.html')
+      ;
+
+    return wrapper.replace(/.*?<!-- insert -->/, text);
   }
 });

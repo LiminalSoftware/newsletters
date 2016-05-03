@@ -22,6 +22,10 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loaders: ['react-hot', 'babel'],
       },
+      {
+        test: /\.html?$/,
+        loader: "html"
+      },
 
       {
         test: /\.css$/,

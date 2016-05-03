@@ -131,6 +131,10 @@
     height:      200px;
 }
 
+.entry > .image img {
+    border-radius: 15px;
+}
+
 #footer .copyright {
     text-align: center;
 }
