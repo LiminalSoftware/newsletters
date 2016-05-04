@@ -90,7 +90,7 @@ export default React.createClass({
                 people & brand communications GmbH
               </div>
               <div id="footer-left">
-                Kreuzbergstra{unescape('%DF')}e 30 | D-10965 Berlin
+                Kreuzbergstraße 30 | D-10965 Berlin
                 <br />
                 T 030 26 93 92-3 | F 030 26 93 92-40
                 <br />
@@ -104,7 +104,7 @@ export default React.createClass({
                 <a href="mailto:berlin@beeftea.de">berlin@beeftea.de</a> | <a href="http://www.beeftea.de">www.beeftea.de</a>
               </div>
               <div id="unsubscribe">
-                Wenn Sie unseren Newsletter nicht mehr erhalten m{unescape('%F6')}chten, melden Sie sich bitte <EditableLink
+                Wenn Sie unseren Newsletter nicht mehr erhalten möchten, melden Sie sich bitte <EditableLink
                 text="heir ab"/>.
               </div>
             </div>

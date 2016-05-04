@@ -5,7 +5,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: [
-    './editor/index.jsx' // Your appʼs entry point
+    './index.jsx' // Your appʼs entry point
   ],
   devtool: process.env.WEBPACK_DEVTOOL || 'source-map',
   output: {
@@ -73,9 +73,9 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new CleanWebpackPlugin(['dist']),
     new CopyWebpackPlugin([
-      { from: 'editor/index.html', to: 'index.html' },
+      { from: 'index.html' },
       {
-        from: 'editor/css/bootstrap.min.css', to: 'css'
+        from: 'css/bootstrap.min.css', to: 'css'
       },
       {
         from: 'templates/default/img',

@@ -40,15 +40,7 @@ export default React.createClass({
 
   render () {
     return (
-      <div
-        id="stickyHeader"
-        style={{
-          position: 'fixed',
-          padding: '10px',
-          //width: '100vw',
-          //backgroundColor: 'rgba(255, 255, 255, 0.8'
-        }}
-      >
+      <div id="stickyHeader">
         <Button bsStyle="primary" onClick={this.copyHtml}>Copy HTML</Button>
         <div
           className="dialog"
@@ -101,7 +93,7 @@ export default React.createClass({
   },
 
   wrap (text) {
-    let wrapper = require('../../templates/default/wrapper.html')
+    let wrapper = require('../templates/default/wrapper.html')
       ;
 
     return wrapper.replace(/.*?<!-- insert -->/, text);
