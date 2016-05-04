@@ -1,6 +1,5 @@
 import React from 'react';
-//import * as marked from 'marked';
-let marked = require('marked');
+import marked from 'marked';
 
 export default React.createClass({
   getInitialState () {

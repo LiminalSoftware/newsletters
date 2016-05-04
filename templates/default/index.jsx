@@ -5,8 +5,7 @@ import EditableLink from './components/editableLink.jsx';
 import EditableImage from './components/editableImage.jsx';
 require('./css/style.css');
 
-export default React.createClass({
-  render () {
+const DefaultTemplate = () => {
     return (
       <div id="content-container">
         <div id="content">
@@ -112,5 +111,6 @@ export default React.createClass({
         </div>
       </div>
     )
-  }
-})
+};
+
+export default DefaultTemplate;
