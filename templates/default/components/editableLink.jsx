@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default React.createClass({
+const EditableLink = React.createClass({
   getInitialState () {
     return {
       text        : this.props.text || 'link text here...',
@@ -22,11 +23,11 @@ export default React.createClass({
       <a
         id={this.props.id}
         className={`highlight-text ${this.props.className}`}
-        href={this.state.href || '#'}
+        href={this.props.href || '#'}
         ref="text"
         onClick={this.toggleEditor}
       >
-        {this.state.editing ? this.editor() : this.state.text}
+        {this.state.editing ? this.editor() : this.props.text}
       </a>
     )
   },
@@ -47,7 +48,7 @@ export default React.createClass({
                  color: 'rgb(0, 0, 0)',
                  width: '100%'
                }}
-               value={this.state.text}
+               value={this.props.text}
                onChange={this.handleEdit('text')}
         />
         <input type="text"
@@ -58,7 +59,7 @@ export default React.createClass({
                  color: 'rgb(0, 0, 0)',
                  width: '100%'
                }}
-               value={this.state.href}
+               value={this.props.href}
                onChange={this.handleEdit('href')}
         />
         <button onClick={this.toggleEditor}>apply</button>
@@ -84,7 +85,11 @@ export default React.createClass({
 
   handleEdit (field) {
     return (e) => {
-      this.setState({[field]: e.target.value});
+      this.props.dispatch({
+        type   : 'UPDATE_LINK',
+        id     : this.props.id,
+        [field]: e.target.value
+      })
     }
   },
 
@@ -97,6 +102,8 @@ export default React.createClass({
   },
 
   test () {
-    window.open(this.state.href, '__blank')
+    window.open(this.props.href, '__blank')
   }
 });
+
+export default EditableLink;

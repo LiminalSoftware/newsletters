@@ -7,14 +7,15 @@ import EditableImage from './components/editableImage.jsx';
 require('./css/style.css');
 
 const DefaultTemplatePres = ({
-  defaultTemplate: { links }
+  defaultTemplate: { links },
+  dispatch
   }) => {
   return (
     <div id="content-container">
       <div id="content">
         <div id="header">
           <div id="social-links">
-            <EditableLink id="online-version" {...links.onlineVersion} ></EditableLink>
+            <EditableLink {...links.onlineVersion} dispatch={dispatch} ></EditableLink>
             <div className="icon-container">
               <EditableImage src="templates/default/img/fb.png"></EditableImage>
               <EditableImage src="templates/default/img/youtube.png"></EditableImage>
@@ -53,7 +54,7 @@ const DefaultTemplatePres = ({
               #<EditableText markdown="false" text="click to edit"/>
             </div>
             <div className="title">
-              <EditableLink text="I'm a title link, click me to edit"/>
+              <EditableLink {...links.titleLink1} dispatch={dispatch} />
             </div>
             <EditableText expandWidth="-300" text={require('./tutorial/entry1.md')}/>
           </div>
@@ -66,8 +67,7 @@ const DefaultTemplatePres = ({
               #<EditableText markdown="false" text="click to edit"/>
             </div>
             <div className="title">
-              <EditableLink text="While editing me, you can click the 'test' button to test your link"
-                            href="http://www.google.com"/>
+              <EditableLink {...links.titleLink2} dispatch={dispatch} />
 
             </div>
             <EditableText expandWidth="-300" text={require('./tutorial/entry2.md')}/>
@@ -81,7 +81,7 @@ const DefaultTemplatePres = ({
               #<EditableText markdown="false" text="click to edit"/>
             </div>
             <div className="title">
-              <EditableLink text="How to use images!"/>
+              <EditableLink {...links.titleLink3} dispatch={dispatch} />
             </div>
             <EditableText expandWidth="-300" text={require('./tutorial/entry3.md')}/>
           </div>
@@ -111,7 +111,7 @@ const DefaultTemplatePres = ({
             </div>
             <div id="unsubscribe">
               Wenn Sie unseren Newsletter nicht mehr erhalten möchten, melden Sie sich bitte <EditableLink
-              text="heir ab"/>.
+              {...links.unsubscribe} dispatch={dispatch} />.
             </div>
           </div>
         </div>
@@ -127,6 +127,11 @@ DefaultTemplatePres.propTypes = {
 const DefaultTemplate = connect(
   state => {
     return state;
+  },
+  dispatch => {
+    return {
+      dispatch
+    }
   }
 )(DefaultTemplatePres);
 
