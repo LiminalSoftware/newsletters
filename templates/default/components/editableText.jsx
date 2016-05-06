@@ -1,10 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import marked from 'marked';
 
-export default React.createClass({
+let EditableText = React.createClass({
   getInitialState () {
     return {
-      text        : this.props.text || '',
       editing     : false,
       width       : '',
       height      : '',
@@ -12,6 +12,11 @@ export default React.createClass({
       expandHeight: Number(this.props.expandHeight) || 10,
       markdown    : this.props.markdown === 'false' ? false : true
     }
+  },
+
+  componentDidMount () {
+    this.setWidth();
+    this.setHeight();
   },
 
   render () {
@@ -25,7 +30,7 @@ export default React.createClass({
           ref="text"
           onClick={this.toggleEditor}
           dangerouslySetInnerHTML={{__html:
-            this.state.editing ? this.editor() : marked(this.state.text)
+            this.state.editing ? this.editor() : marked(this.props.text)
           }}
         ></div>
       )
@@ -34,7 +39,7 @@ export default React.createClass({
           ref="text"
           onClick={this.toggleEditor}
         >
-          {this.state.text}
+          {this.props.text}
         </span>
       )
     }
@@ -49,7 +54,7 @@ export default React.createClass({
             height: `${this.state.height + this.state.expandHeight}px`,
             color: 'rgb(0, 0, 0)'
           }}
-        value={this.state.text}
+        value={this.props.text}
         onChange={this.handleEdit}
         onBlur={this.toggleEditor}
       />
@@ -59,9 +64,6 @@ export default React.createClass({
   toggleEditor (e) {
     if (!this.state.editing) {
       e.preventDefault();
-
-      this.setWidth();
-      this.setHeight();
     }
 
     this.setState({editing: !this.state.editing}, () => {
@@ -72,7 +74,11 @@ export default React.createClass({
   },
 
   handleEdit (e) {
-    this.setState({text: e.target.value});
+    this.props.dispatch({
+      type: 'UPDATE_TEXT',
+      id: this.props.id,
+      text: e.target.value
+    })
   },
 
   setWidth () {
@@ -83,3 +89,9 @@ export default React.createClass({
     this.setState({height: this.refs.text.offsetHeight});
   }
 });
+
+EditableText = connect(undefined, dispatch => {
+  return {dispatch};
+})(EditableText);
+
+export default EditableText;

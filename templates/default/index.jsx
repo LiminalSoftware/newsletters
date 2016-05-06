@@ -7,15 +7,15 @@ import EditableImage from './components/editableImage.jsx';
 require('./css/style.css');
 
 const DefaultTemplatePres = ({
-  defaultTemplate: { links },
-  dispatch
+  links,
+  texts
   }) => {
   return (
     <div id="content-container">
       <div id="content">
         <div id="header">
           <div id="social-links">
-            <EditableLink {...links.onlineVersion} dispatch={dispatch} ></EditableLink>
+            <EditableLink {...links.onlineVersion} />
             <div className="icon-container">
               <EditableImage src="templates/default/img/fb.png"></EditableImage>
               <EditableImage src="templates/default/img/youtube.png"></EditableImage>
@@ -42,8 +42,8 @@ const DefaultTemplatePres = ({
         <div id="body">
           <Title />
           <div id="intro">
-            <EditableText className="greeting" text="Hallo Grunszky," expandWidth={10}/>
-            <EditableText text={require('./tutorial/intro.md')}/>
+            <EditableText className="greeting" expandWidth={10} {...texts.greeting} />
+            <EditableText {...texts.intro} />
           </div>
 
           <div className="divider"></div>
@@ -51,12 +51,12 @@ const DefaultTemplatePres = ({
           <div className="entry">
             <EditableImage src="templates/default/img/280x200.png" alt="coca-cola"/>
             <div className="tag">
-              #<EditableText markdown="false" text="click to edit"/>
+              #<EditableText markdown="false" {...texts.tag1} />
             </div>
             <div className="title">
-              <EditableLink {...links.titleLink1} dispatch={dispatch} />
+              <EditableLink {...links.titleLink1} />
             </div>
-            <EditableText expandWidth="-300" text={require('./tutorial/entry1.md')}/>
+            <EditableText expandWidth="-300" {...texts.entry1} />
           </div>
 
           <div className="divider"></div>
@@ -64,13 +64,13 @@ const DefaultTemplatePres = ({
           <div className="entry">
             <EditableImage src="templates/default/img/280x200.png" alt="3d drucker"/>
             <div className="tag">
-              #<EditableText markdown="false" text="click to edit"/>
+              #<EditableText markdown="false" {...texts.tag2} />
             </div>
             <div className="title">
-              <EditableLink {...links.titleLink2} dispatch={dispatch} />
+              <EditableLink {...links.titleLink2} />
 
             </div>
-            <EditableText expandWidth="-300" text={require('./tutorial/entry2.md')}/>
+            <EditableText expandWidth="-300" {...texts.entry2} />
           </div>
 
           <div className="divider"></div>
@@ -78,12 +78,12 @@ const DefaultTemplatePres = ({
           <div className="entry">
             <EditableImage src="templates/default/img/280x200.png" alt="kompetenztage"/>
             <div className="tag">
-              #<EditableText markdown="false" text="click to edit"/>
+              #<EditableText markdown="false" {...texts.tag3} />
             </div>
             <div className="title">
-              <EditableLink {...links.titleLink3} dispatch={dispatch} />
+              <EditableLink {...links.titleLink3} />
             </div>
-            <EditableText expandWidth="-300" text={require('./tutorial/entry3.md')}/>
+            <EditableText expandWidth="-300" {...texts.entry3} />
           </div>
 
           <div className="divider"></div>
@@ -111,7 +111,7 @@ const DefaultTemplatePres = ({
             </div>
             <div id="unsubscribe">
               Wenn Sie unseren Newsletter nicht mehr erhalten möchten, melden Sie sich bitte <EditableLink
-              {...links.unsubscribe} dispatch={dispatch} />.
+              {...links.unsubscribe} />.
             </div>
           </div>
         </div>
@@ -125,13 +125,8 @@ DefaultTemplatePres.propTypes = {
 };
 
 const DefaultTemplate = connect(
-  state => {
-    return state;
-  },
-  dispatch => {
-    return {
-      dispatch
-    }
+  ({ defaultTemplate }) => {
+    return defaultTemplate;
   }
 )(DefaultTemplatePres);
 

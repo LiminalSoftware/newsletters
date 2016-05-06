@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-const EditableLink = React.createClass({
+let EditableLink = React.createClass({
   getInitialState () {
     return {
-      text        : this.props.text || 'link text here...',
-      href        : this.props.href || '',
       editing     : false,
       width       : '',
       height      : '',
       expandWidth : Number(this.props.expandWidth) || 0,
       expandHeight: Number(this.props.expandHeight) || 10
     }
+  },
+
+  componentDidMount () {
+    this.setHeight();
+    this.setWidth();
   },
 
   render () {
@@ -71,9 +74,6 @@ const EditableLink = React.createClass({
   toggleEditor (e) {
     if (!this.state.editing) {
       e.preventDefault();
-
-      this.setWidth();
-      this.setHeight();
     }
 
     this.setState({editing: !this.state.editing}, () => {
@@ -105,5 +105,13 @@ const EditableLink = React.createClass({
     window.open(this.props.href, '__blank')
   }
 });
+
+EditableLink.propTypes = {
+  dispatch: PropTypes.func
+};
+
+EditableLink = connect(undefined, dispatch => {
+  return {dispatch};
+})(EditableLink);
 
 export default EditableLink;

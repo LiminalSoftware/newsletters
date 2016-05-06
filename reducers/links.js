@@ -1,3 +1,5 @@
+import { findInCollection } from '../util';
+
 const defaultLinksState = {
   onlineVersion: {
     id  : 'online-version',
@@ -22,29 +24,19 @@ const defaultLinksState = {
   },
 };
 
-const getLink = (links, id) => {
-  const linkKey = Object.keys(links).find(
-    key => {
-      return id === links[key].id;
-    }
-  );
-  const link = links[linkKey];
-
-  return {link, linkKey};
-};
-
 const updateLink = (links, { id, text, href }) => {
-  const { link, linkKey } = getLink(links, id);
-  
+  console.log(findInCollection(links, id));
+  const { item: link, key: linkKey } = findInCollection(links, id);
+
   text = typeof(text) === 'undefined' ? link.text : text;
   href = typeof(href) === 'undefined' ? link.href : href;
-  
+
   const updatedLink = {...link, text, href};
 
   return {...links, [linkKey]: updatedLink};
 };
 
-const links = (links = defaultLinksState, action) => {
+const links = (links = defaultLinksState, action = {}) => {
   switch (action.type) {
     case 'UPDATE_LINK':
       return updateLink(links, action);
