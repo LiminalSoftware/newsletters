@@ -1,35 +1,36 @@
 import '../css/stickyHeader.css';
 import React from 'react';
+import { connect } from 'react-redux';
 import {Button} from 'react-bootstrap';
 //import * as juice from 'juice/client';
 
-let juice    = require('juice/client')
+const juice  = require('juice/client')
   , download = (url, callback) => {
-      let xhr = new XMLHttpRequest
-        ;
+        let xhr = new XMLHttpRequest
+          ;
 
-      xhr.open('GET', url, true);
-      xhr.responseType = 'arraybuffer';
+        xhr.open('GET', url, true);
+        xhr.responseType = 'arraybuffer';
 
-      xhr.onload = function (e) {
-        var arr = new Uint8Array(this.response);
-        var i = arr.length;
-        var binStr = new Array(i);
+        xhr.onload = function (e) {
+          var arr = new Uint8Array(this.response);
+          var i = arr.length;
+          var binStr = new Array(i);
 
-        while (i--) {
-          binStr[i] = String.fromCharCode(arr[i]);
-        }
+          while (i--) {
+            binStr[i] = String.fromCharCode(arr[i]);
+          }
 
-        var data = binStr.join('');
+          var data = binStr.join('');
 
-        callback(data);
-      };
+          callback(data);
+        };
 
-      xhr.send();
-    }
+        xhr.send();
+      }
   ;
 
-export default React.createClass({
+let StickyHeader = React.createClass({
   getInitialState () {
     return {
       rootSelector : this.props.rootSelector,
@@ -42,6 +43,8 @@ export default React.createClass({
     return (
       <div id="stickyHeader">
         <Button bsStyle="primary" onClick={this.copyHtml}>Copy HTML</Button>
+        <Button bsStyle="primary" onClick={this.save}>Save</Button>
+        <Button bsStyle="primary" onClick={this.load}>load</Button>
         <div
           className="dialog"
           style={{
@@ -97,5 +100,21 @@ export default React.createClass({
       ;
 
     return wrapper.replace(/.*?<!-- insert -->/, text);
+  },
+
+  save () {
+    this.props.dispatch({
+      type: 'SAVE_STATE'
+    })
+  },
+
+  load () {
+    this.props.dispatch({
+      type: 'LOAD_STATE'
+    })
   }
 });
+
+StickyHeader = connect()(StickyHeader);
+
+export default StickyHeader;

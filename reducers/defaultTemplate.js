@@ -6,7 +6,7 @@ const defaults = {
   texts: texts()
 };
 
-const defaultTemplate = (state = defaults, action) => {
+const defaultTemplate = (state = defaults, action = {}) => {
   switch (action.type) {
     case 'UPDATE_TEXT':
       console.log('UDATE_TEXT');
@@ -23,7 +23,7 @@ const defaultTemplate = (state = defaults, action) => {
       };
       break;
     default:
-      return {...state};
+      return state;
   }
 };
 

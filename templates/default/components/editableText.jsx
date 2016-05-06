@@ -90,8 +90,6 @@ let EditableText = React.createClass({
   }
 });
 
-EditableText = connect(undefined, dispatch => {
-  return {dispatch};
-})(EditableText);
+EditableText = connect()(EditableText);
 
 export default EditableText;

@@ -106,12 +106,6 @@ let EditableLink = React.createClass({
   }
 });
 
-EditableLink.propTypes = {
-  dispatch: PropTypes.func
-};
-
-EditableLink = connect(undefined, dispatch => {
-  return {dispatch};
-})(EditableLink);
+EditableLink = connect()(EditableLink);
 
 export default EditableLink;

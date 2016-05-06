@@ -125,7 +125,7 @@ DefaultTemplatePres.propTypes = {
 };
 
 const DefaultTemplate = connect(
-  ({ defaultTemplate }) => {
+  ({ stickyHeader: {defaultTemplate} }) => {
     return defaultTemplate;
   }
 )(DefaultTemplatePres);

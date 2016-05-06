@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import defaultTemplate from './defaultTemplate';
+import stickyHeader from './stickyHeader';
 
 const rootReducer = combineReducers({
-  defaultTemplate
+  stickyHeader
 });
 
 export default rootReducer

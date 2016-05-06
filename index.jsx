@@ -7,10 +7,6 @@ import App from './components/App';
 
 const store = createStore(reducer);
 
-store.subscribe(() => {
-  localStorage.setItem('liminal.newsletters', JSON.stringify(store.getState()));
-});
-
 render(
   <Provider store={store}>
     <App/>
