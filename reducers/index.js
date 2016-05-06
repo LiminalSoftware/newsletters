@@ -1,11 +1,8 @@
-//import { combineReducers } from 'redux';
-//
-//const rootReducer = combineReducers({
-//
-//});
+import { combineReducers } from 'redux';
+import defaultTemplate from './defaultTemplate';
 
-const rootReducer = (state = {}, action) => {
-  return state;
-};
+const rootReducer = combineReducers({
+  defaultTemplate
+});
 
 export default rootReducer

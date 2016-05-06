@@ -7,7 +7,13 @@ import App from './components/App';
 
 const store = createStore(reducer);
 
+store.subscribe(() => {
+  localStorage.setItem('liminal.newsletters', store.getState())
+});
+
 render(
-    <App/>,
+  <Provider store={store}>
+    <App/>
+  </Provider>,
   document.getElementById("root")
 );
