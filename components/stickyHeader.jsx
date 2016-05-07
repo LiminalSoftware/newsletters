@@ -1,7 +1,7 @@
 import '../css/stickyHeader.css';
 import React from 'react';
 import { connect } from 'react-redux';
-import {Button} from 'react-bootstrap';
+import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 //import * as juice from 'juice/client';
 
 const juice  = require('juice/client')
@@ -41,22 +41,47 @@ let StickyHeader = React.createClass({
 
   render () {
     return (
-      <div id="stickyHeader">
-        <Button bsStyle="primary" onClick={this.copyHtml}>Copy HTML</Button>
-        <Button bsStyle="primary" onClick={this.save}>Save</Button>
-        <Button bsStyle="primary" onClick={this.load}>load</Button>
-        <div
-          className="dialog"
-          style={{
+      <div id="navbarContainer">
+        <Navbar fixedTop fluid>
+          <Navbar.Header>
+            <Navbar.Brand>
+              Newsletters
+            </Navbar.Brand>
+          </Navbar.Header>
+          <Navbar.Toggle />
+          <Navbar.Collapse>
+            <Navbar.Form pullLeft>
+              <Button bsStyle="primary" onClick={this.copyHtml}>Copy HTML</Button>
+            </Navbar.Form>
+            <Navbar.Form pullRight>
+              <Button bsStyle="danger">
+                Clear
+              </Button>
+            </Navbar.Form>
+            <Nav pullRight bsStyle="pills" pullRight>
+              <NavDropdown eventKey={4} title="Save" id="nav-dropdown-save">
+                <MenuItem eventKey="4.1" onClick={this.save}>Save as:</MenuItem>
+                <MenuItem divider/>
+                <MenuItem eventKey="4.2">Some draft</MenuItem>
+              </NavDropdown>
+              <NavDropdown eventKey={5} title="Load" id="nav-dropdown-load">
+                <MenuItem eventKey="5.1" onClick={this.load}>Some draft</MenuItem>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+          <div
+            className="dialog"
+            style={{
             opacity: this.state.dialogOpacity
           }}
-        >
+          >
         <textarea
           ref="copyArea"
           value={this.state.copyText}
         ></textarea>
-          <div className="message">Hit "Ctrl + C" to copy now</div>
-        </div>
+            <div className="message">Hit "Ctrl + C" to copy now</div>
+          </div>
+        </Navbar>
       </div>
     )
   },
