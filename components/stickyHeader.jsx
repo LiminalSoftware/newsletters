@@ -1,5 +1,6 @@
 import '../css/stickyHeader.css';
 import React from 'react';
+import { findDOMNode } from 'react-dom';
 import { connect } from 'react-redux';
 import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 //import * as juice from 'juice/client';
@@ -35,7 +36,10 @@ let StickyHeader = React.createClass({
     return {
       rootSelector : this.props.rootSelector,
       dialogOpacity: 0,
-      copyText     : ''
+      copyText     : '',
+      saveDropdown : {
+        open: false
+      }
     }
   },
 
@@ -59,8 +63,16 @@ let StickyHeader = React.createClass({
               </Button>
             </Navbar.Form>
             <Nav pullRight bsStyle="pills" pullRight>
-              <NavDropdown eventKey={4} title="Save" id="nav-dropdown-save">
-                <MenuItem eventKey="4.1" onClick={this.save}>Save as:</MenuItem>
+              <NavDropdown
+                open={this.state.saveDropdown.open}
+                onToggle={this.saveDropdownToggle}
+                title="Save"
+                id="nav-dropdown-save"
+              >
+                <MenuItem eventKey="4.1" ref="keepFocus">
+                  <input type="text" placeholder="Name..."></input>
+                  <Button onClick={this.save}>Save</Button>
+                </MenuItem>
                 <MenuItem divider/>
                 <MenuItem eventKey="4.2">Some draft</MenuItem>
               </NavDropdown>
@@ -84,6 +96,21 @@ let StickyHeader = React.createClass({
         </Navbar>
       </div>
     )
+  },
+
+  saveDropdownToggle (open) {
+    const keepFocusElement = findDOMNode(this.refs.keepFocus);
+    const keepFocusChildren = [].slice.apply(keepFocusElement.children[0].children);
+    const keepFocus = keepFocusChildren.some(e => {
+      return document.activeElement === e
+    });
+
+    if (!keepFocus) this.setState({
+      saveDropdown: {
+        ...this.state.saveDropdown,
+        open
+      }
+    });
   },
 
   copyHtml () {
