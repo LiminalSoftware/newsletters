@@ -40,7 +40,7 @@ let StickyHeader = React.createClass({
       saveDropdown : {
         open: false
       },
-      saveName: ''
+      saveName     : ''
     }
   },
 
@@ -71,14 +71,19 @@ let StickyHeader = React.createClass({
                 id="nav-dropdown-save"
               >
                 <MenuItem eventKey="4.1" ref="keepFocus">
-                  <input type="text" value={this.state.saveName} placeholder="Name..." onChange={this.updateSaveName}></input>
-                  <Button onClick={this.save}>Save</Button>
+                  <input type="text" value={this.state.saveName} placeholder="Name..."
+                         onChange={this.updateSaveName}></input>
+                  <Button onClick={this.save(this.state.saveName)}>Save</Button>
                 </MenuItem>
                 <MenuItem divider/>
-                <MenuItem eventKey="4.2">Some draft</MenuItem>
+                { Object.keys(this.props.saves).map( (name) => {
+                  return <MenuItem key={name} onClick={this.save(name)} >{name}</MenuItem>
+                }) }
               </NavDropdown>
               <NavDropdown eventKey={5} title="Load" id="nav-dropdown-load">
-                <MenuItem eventKey="5.1" onClick={this.load}>Some draft</MenuItem>
+                { Object.keys(this.props.saves).map( (name) => {
+                  return <MenuItem key={name} onClick={this.load(name)} >{name}</MenuItem>
+                }) }
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
@@ -159,18 +164,22 @@ let StickyHeader = React.createClass({
     return wrapper.replace(/.*?<!-- insert -->/, text);
   },
 
-  save () {
-    this.props.dispatch({
-      type: 'SAVE_STATE',
-      name: this.state.saveName
-    })
+  save (name) {
+    return () => {
+      this.props.dispatch({
+        type: 'SAVE_STATE',
+        name
+      })
+    }
   },
 
-  load () {
-    this.props.dispatch({
-      type: 'LOAD_STATE',
-      name: this.state.saveName
-    })
+  load (name) {
+    return () => {
+      this.props.dispatch({
+        type: 'LOAD_STATE',
+        name
+      })
+    }
   }
 });
 

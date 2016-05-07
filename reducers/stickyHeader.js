@@ -15,7 +15,10 @@ const stickyHeader = (state = {}, action) => {
         ...parseStored(),
         [action.name]: state.defaultTemplate
       }));
-      return state;
+      return {
+        ...state,
+        saves: saves(state.saves, action)
+      };
     case 'LOAD_STATE':
       const parsedState = parseStored()[action.name];
       return {
