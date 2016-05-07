@@ -39,7 +39,8 @@ let StickyHeader = React.createClass({
       copyText     : '',
       saveDropdown : {
         open: false
-      }
+      },
+      saveName: ''
     }
   },
 
@@ -70,7 +71,7 @@ let StickyHeader = React.createClass({
                 id="nav-dropdown-save"
               >
                 <MenuItem eventKey="4.1" ref="keepFocus">
-                  <input type="text" placeholder="Name..."></input>
+                  <input type="text" value={this.state.saveName} placeholder="Name..." onChange={this.updateSaveName}></input>
                   <Button onClick={this.save}>Save</Button>
                 </MenuItem>
                 <MenuItem divider/>
@@ -111,6 +112,10 @@ let StickyHeader = React.createClass({
         open
       }
     });
+  },
+
+  updateSaveName (e) {
+    this.setState({saveName: e.target.value})
   },
 
   copyHtml () {
@@ -156,17 +161,21 @@ let StickyHeader = React.createClass({
 
   save () {
     this.props.dispatch({
-      type: 'SAVE_STATE'
+      type: 'SAVE_STATE',
+      name: this.state.saveName
     })
   },
 
   load () {
     this.props.dispatch({
-      type: 'LOAD_STATE'
+      type: 'LOAD_STATE',
+      name: this.state.saveName
     })
   }
 });
 
-StickyHeader = connect()(StickyHeader);
+StickyHeader = connect(({ stickyHeader: {saves} }) => {
+  return {saves};
+})(StickyHeader);
 
 export default StickyHeader;

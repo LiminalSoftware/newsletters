@@ -1,18 +1,33 @@
 import defaultTemplate from './defaultTemplate';
+import saves from './saves';
 
 const LOCAL_STORAGE_KEY = 'liminal.newsletters';
 
+const parseStored = () => {
+  return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+};
+
 const stickyHeader = (state = {}, action) => {
   //debugger;
-  switch(action.type) {
+  switch (action.type) {
     case 'SAVE_STATE':
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
-      return {...state, defaultTemplate: defaultTemplate(state.defaultTemplate, action)};
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({
+        ...parseStored(),
+        [action.name]: state.defaultTemplate
+      }));
+      return state;
     case 'LOAD_STATE':
-      const parsedState = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-      return {...state, defaultTemplate: defaultTemplate(parsedState.defaultTemplate, action)};
+      const parsedState = parseStored()[action.name];
+      return {
+        ...state,
+        defaultTemplate: defaultTemplate(parsedState, action)
+      };
     default:
-      return {...state, defaultTemplate: defaultTemplate(state.defaultTemplate, action)};
+      return {
+        ...state,
+        saves          : saves(state.saves, action),
+        defaultTemplate: defaultTemplate(state.defaultTemplate, action)
+      };
   }
 };
 
