@@ -1,10 +1,9 @@
-export const findInCollection = (collection, id) => {
-  const key = Object.keys(collection).find(
-    k => {
-      return id === collection[k].id;
-    }
-  );
-  const item = collection[key];
+import findInCollection from './misc/findInCollection';
+import getJXONTree from './aws/jxon';
+import { arrayBufferToBase64, base64ToArrayBuffer } from './misc/binaryConvert';
 
-  return {item, key};
-};
+export { findInCollection, getJXONTree, arrayBufferToBase64, base64ToArrayBuffer }
+
+
+
+

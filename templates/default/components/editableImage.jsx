@@ -1,7 +1,8 @@
 import React from 'react';
-//import Draft from '../../../editor/services/draftService';
-
-//let draft = new Draft();
+import path from 'path';
+import { imagesUrl } from '../../../util/aws';
+import { arrayBufferToBase64, base64ToArrayBuffer } from '../../../util';
+import '../css/editableImage.css';
 
 export default React.createClass({
   getInitialState () {
@@ -43,7 +44,7 @@ export default React.createClass({
           ref="image"
           onClick={this.toggleEditor}
           src={this.state.dataUri}
-          alt={this.state.altText}
+          alt={this.state.altText || ''}
         /></a>
     )
   },
@@ -51,7 +52,7 @@ export default React.createClass({
   editor () {
     return (
       <div
-        className="image"
+        className="image editor"
         style={{
             width: `${this.state.width + this.state.expandWidth}px`,
             height: `${this.state.height + this.state.expandHeight}px`,
@@ -63,12 +64,7 @@ export default React.createClass({
           ref="hrefEditor"
           placeholder="Link URL Here..."
           style={{
-            border: 'none',
-            backgroundColor: 'rgba(255, 255, 255, 0.8)',
             width: `${this.state.width + this.state.expandWidth}px`,
-            color: 'rgb(0, 0, 0)',
-            position: 'relative',
-            zIndex: 1
           }}
           value={this.state.href}
           onChange={this.handleEdit('href')}
@@ -76,14 +72,9 @@ export default React.createClass({
         <input
           type="text"
           ref="altEditor"
-          placeholder="Alt Text Here..."
+          placeholder="Image name..."
           style={{
-            border: 'none',
-            backgroundColor: 'rgba(255, 255, 255, 0.8)',
             width: `${this.state.width + this.state.expandWidth}px`,
-            color: 'rgb(0, 0, 0)',
-            position: 'relative',
-            zIndex: 1
           }}
           value={this.state.altText}
           onChange={this.handleEdit('altText')}
@@ -92,11 +83,7 @@ export default React.createClass({
           type="file"
           ref="fileEditor"
           style={{
-            border: 'none',
-            backgroundColor: 'rgba(255, 255, 255, 0.8)',
             width: `${this.state.width + this.state.expandWidth}px`,
-            position: 'relative',
-            zIndex: 1
           }}
           onChange={this.handleUpload}
         />
@@ -110,12 +97,6 @@ export default React.createClass({
         >apply
         </button>
         <img
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            zIndex: 0
-          }}
           ref="preview"
           src={this.state.dataUri}
           alt={this.state.altText}
@@ -131,6 +112,8 @@ export default React.createClass({
 
       this.setWidth();
       this.setHeight();
+    } else {
+      this.awsImageUpload();
     }
 
     this.setState({editing: !this.state.editing}, () => {
@@ -160,7 +143,10 @@ export default React.createClass({
       ;
 
     reader.onload = (e) => {
-      this.setState({'dataUri': e.target.result})
+      this.setState({
+        filename: file.name,
+        dataUri : e.target.result
+      })
     };
 
     reader.readAsDataURL(file);
@@ -169,29 +155,59 @@ export default React.createClass({
   },
 
   download (url) {
-    let xhr  = new XMLHttpRequest
-      , that = this
-      ;
+    let xhr = new XMLHttpRequest;
+    let that = this;
 
     xhr.open('GET', url, true);
     xhr.responseType = 'arraybuffer';
 
     xhr.onload = function (e) {
-      var arr = new Uint8Array(this.response);
-      var i = arr.length;
-      var binStr = new Array(i);
+      let base64Image = arrayBufferToBase64(this.response);
 
-      while (i--) {
-        binStr[i] = String.fromCharCode(arr[i]);
-      }
-
-      var data = binStr.join('');
-
-      that.setState({dataUri: 'data:;base64,' + window.btoa(data)});
+      that.setState({
+        filename: path.basename(url),
+        base64  : base64Image,
+        dataUri : `data:;base64,${base64Image}`
+      });
     };
 
     xhr.send();
 
     return 'data:;base64,'
+  },
+
+  awsImageUpload() {
+    const xhr = new XMLHttpRequest;
+    const data = base64ToArrayBuffer(this.state.base64);
+    const extension = path.extname(this.state.filename) || '.png';
+    console.log(extension);
+    let contentType;
+
+    switch (extension) {
+      case '.jpg':
+      case '.jpeg':
+        contentType = 'image/jpg';
+        break;
+      case '.png':
+        console.log('png detected!');
+        contentType = 'image/png';
+        break;
+      case '.svg':
+        contentType = 'image/svg+xml';
+        break;
+      case '.tiff':
+        contentType = 'image/tiff';
+        break;
+      default:
+        console.error('unsupported image type!');
+    }
+
+    xhr.open('PUT', `${imagesUrl}/${this.state.altText}${extension}`, true);
+    xhr.setRequestHeader('content-type', contentType);
+    xhr.onload = () => {
+      //-- error handling?
+    };
+
+    xhr.send(data);
   }
 });

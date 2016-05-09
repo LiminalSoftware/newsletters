@@ -8,7 +8,6 @@ const parseStored = () => {
 };
 
 const stickyHeader = (state = {}, action) => {
-  //debugger;
   switch (action.type) {
     case 'SAVE_STATE':
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({

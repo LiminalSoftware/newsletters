@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import stickyHeader from './stickyHeader';
+import aws from './aws';
 
 const rootReducer = combineReducers({
-  stickyHeader
+  stickyHeader,
+  aws
 });
 
 export default rootReducer

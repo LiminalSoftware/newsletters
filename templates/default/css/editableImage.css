@@ -1,0 +1,17 @@
+.image.editor {
+    position: relative;
+}
+
+.image.editor input {
+    border:           none;
+    background-color: rgba(255, 255, 255, 0.8);
+    position:         relative;
+    z-index:          1;
+}
+
+.image.editor img {
+    position: absolute;
+    top:      0;
+    left:     0;
+    z-index:  0;
+}
