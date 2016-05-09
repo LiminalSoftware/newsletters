@@ -7,7 +7,7 @@
 }
 
 #content {
-    width:            640px;
+    border-width: 0;
     margin:           auto;
     background-color: rgb(255, 255, 255);
 }
@@ -25,36 +25,25 @@
 }
 
 #social-links {
-    position: relative;
-    margin:   10px 20px;
+    text-align: right;
 }
 
 #social-links img {
     padding: 2px;
 }
 
-#social-links > .icon-container,
-#title-container {
-    position: absolute;
-    right:    0;
-    top:      0;
-}
-
 #logo {
-    margin:     10px 0;
+    /*margin:     10px 0;*/
     text-align: center;
+    /*vertical-align: middle;*/
 }
 
-#menu > .item {
+#menu .item {
     background:      rgb(255, 80, 65);
     text-align:      center;
-    width:           200px;
-    height:          30px;
-    display:         table-cell;
-    border-collapse: collapse;
+    vertical-align:  middle;
     color:           rgb(255, 255, 255);
     font-size:       12px;
-    vertical-align:  middle;
     text-transform:  uppercase;
 }
 
@@ -68,8 +57,8 @@
 }
 
 #title-container {
+    text-align: right;
     font-size:     17px;
-    padding-right: 20px;
 }
 
 #intro {
@@ -83,14 +72,11 @@
 }
 
 .divider {
-    display:        block;
-    content:        '';
-    width:          600px;
-    height:         30px;
-    margin-bottom:  30px;
-    background:     transparent;
+    height: 30px;
+}
+
+.divider > td {
     border-bottom:  1px solid #C7C7C7;
-    pointer-events: none;
 }
 
 .tag {
@@ -98,15 +84,15 @@
     background-color: rgb(255, 80, 65);
     text-transform:   uppercase;
     font-size:        12px;
-}
-
-.tag {
-    display: inline-block;
     padding: 3px;
 }
 
 .entry {
     min-height: 190px;
+}
+
+.entry > table > tbody > tr > td {
+    vertical-align: top;
 }
 
 .entry .title {
@@ -123,15 +109,12 @@
     text-decoration: underline;
 }
 
-.entry > .image {
-    float:       right;
-    margin-left: 20px;
-
+.entry .image {
     width:       280px;
     height:      200px;
 }
 
-.entry > .image img {
+.entry .image img {
     border-radius: 15px;
 }
 
@@ -145,9 +128,6 @@
 
 #footer-left,
 #footer-right {
-    display: inline-block;
-    margin:  20px 0;
-    width:   290px;
 }
 
 #footer-left {
@@ -160,6 +140,7 @@
     color:          rgb(135, 135, 140);
     text-align:     center;
     padding-bottom: 20px;
+    margin-top: 20px;
 }
 
 #unsubscribe a,
@@ -172,15 +153,12 @@
  * UTILITY
  */
 
-.highlight-text {
+.highlight-text,
+.highlight-text:hover,
+.highlight-text:visited {
     color: rgb(255, 80, 65);
 }
 
 .clear {
     clear: both;
 }
-
-/*.highlight-bg {*/
-/*color: rgb(255, 255, 255) !important;*/
-/*background-color: rgb(255, 80, 65);*/
-/*}*/

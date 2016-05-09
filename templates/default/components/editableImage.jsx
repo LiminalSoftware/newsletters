@@ -5,17 +5,24 @@ import React from 'react';
 
 export default React.createClass({
   getInitialState () {
-    let defaults = {
-      dataUri     : this.download(this.props.src),
+    let copiedProps = {
       href        : this.props.href || '',
-      altText     : this.props.alt || '',
-      editing     : false,
-      width       : '',
-      height      : '',
+      altText     : this.props.altText || '',
+      vspace      : this.props.vspace || 0,
+      hspace      : this.props.hspace || 0,
       expandWidth : this.props.expandWidth || 0,
       expandHeight: this.props.expandHeight || 0
-    }
-    ;
+
+    };
+
+    let defaults = {
+          ...copiedProps,
+          dataUri: this.download(this.props.src),
+          editing: false,
+          width  : '',
+          height : ''
+        }
+      ;
 
     return defaults;
     //return draft.isAvailable ? draft.store : defaults;
@@ -100,7 +107,8 @@ export default React.createClass({
             zIndex: 1
           }}
           onClick={this.toggleEditor}
-        >apply</button>
+        >apply
+        </button>
         <img
           style={{
             position: 'absolute',
