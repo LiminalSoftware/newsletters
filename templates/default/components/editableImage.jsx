@@ -255,6 +255,12 @@ export default React.createClass({
   },
 
   awsImageUpload(callback) {
+    if (!this.state.altText) {
+      //-- TODO: error handling
+      console.warn('No image name, not uploading');
+      return;
+    }
+
     const extension = path.extname(this.state.filename) || '.png';
     const imageUrl = `${imagesUrl}/${this.state.altText}${extension}`;
     const currentMd5 = md5(this.base64Image());
@@ -281,17 +287,19 @@ export default React.createClass({
         contentType = 'image/tiff';
         break;
       default:
+        //-- TODO: error handling
         console.error('unsupported image type!');
     }
 
     xhr.open('PUT', imageUrl, true);
     xhr.setRequestHeader('content-type', contentType);
     xhr.onload = () => {
-      //-- error handling?
+      //-- TODO: error handling
       this.setState({src: imageUrl}, callback)
     };
 
     xhr.send(data);
+    //-- TODO: loading spinner or something...
   },
 
   base64Image () {
