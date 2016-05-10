@@ -16,21 +16,33 @@ export default React.createClass({
 
     };
 
+    let canvas = document.createElement('canvas');
+    canvas.width = 280;
+    canvas.height = 200;
+
+    let context = canvas.getContext('2d');
+
     let defaults = {
           ...copiedProps,
-          dataUri: this.download(this.props.src),
-          editing: false,
-          width  : '',
-          height : ''
+          dataUri    : this.download(this.props.src),
+          editing    : false,
+          width      : '',
+          height     : '',
+          canvas,
+          context,
+          scale      : 1,
+          scaleValue : 20,
+          xShift     : 0,
+          xShiftValue: 50,
+          yShift     : 0,
+          yShiftValue: 50
         }
       ;
 
     return defaults;
-    //return draft.isAvailable ? draft.store : defaults;
   },
 
   render () {
-    //draft.update(this.state);
     return this.state.editing ? this.editor() : this.static();
   },
 
@@ -96,23 +108,84 @@ export default React.createClass({
           onClick={this.toggleEditor}
         >apply
         </button>
+        <input ref="scale" type="range" min="0" max="100" value={this.state.scaleValue} onChange={this.scale}/>
+        <div style={{position: 'relative', zIndex: 1}}>Scale: {Math.floor(this.state.scale)}</div>
+        <input ref="xShift" type="range" min="0" max="100" value={this.state.xShiftValue} onChange={this.xShift}/>
+        <div style={{position: 'relative', zIndex: 1}}>X: {Math.floor(this.state.xShift)}</div>
+        <input ref="yShift" type="range" min="0" max="100" value={this.state.yShiftValue} onChange={this.yShift}/>
+        <div style={{position: 'relative', zIndex: 1}}>Y: {Math.floor(this.state.yShift)}</div>
+        {/*<canvas
+         ref="canvas"
+         onClick={this.toggleEditor}
+         width={this.state.width}
+         height={this.state.height}
+         />*/}
         <img
           ref="preview"
           src={this.state.dataUri}
           alt={this.state.altText}
           onClick={this.toggleEditor}
+          width={this.state.width}
+          height={this.state.height}
+        />
+        <img
+          style={{display: 'none'}}
+          ref="original"
+          src={this.state.originalDataUri}
         />
       </div>
     )
   },
 
+  scale (e) {
+    console.log('value:', e.target.value);
+    const scale = (e.target.value * 0.0375) + 0.25;
+    console.log('scale:', scale);
+    const max = 2;
+    const min = 0.5;
+
+    //if (scale >)
+    this.setState({
+      scale     : scale,
+      scaleValue: e.target.value
+    }, () => {
+      this.renderImage();
+    });
+  },
+
+  xShift (e) {
+    const xShift = (e.target.value * 8) - 400;
+    this.setState({xShift, xShiftValue: e.target.value}, () => {
+      this.renderImage();
+    });
+  },
+
+  yShift (e) {
+    const yShift = (e.target.value * 8) - 400;
+    this.setState({yShift, yShiftValue: e.target.value}, () => {
+      this.renderImage();
+    });
+  },
+
+  renderImage () {
+    const { canvas, context, scale, xShift, yShift, width, height } = this.state;
+
+    context.clearRect(0, 0, width, height);
+    context.drawImage(this.refs.original, xShift, yShift, scale * width, scale * height, 0, 0, width, height);
+    this.setState({dataUri: canvas.toDataURL()})
+  },
+
   toggleEditor (e) {
     if (!this.state.editing) {
+      //-- switching from static to editor
+
       e.preventDefault();
 
       this.setWidth();
       this.setHeight();
     } else {
+      //-- switching from editor to static
+
       this.awsImageUpload();
     }
 
@@ -144,8 +217,9 @@ export default React.createClass({
 
     reader.onload = (e) => {
       this.setState({
-        filename: file.name,
-        dataUri : e.target.result
+        filename       : file.name,
+        dataUri        : e.target.result,
+        originalDataUri: e.target.result
       })
     };
 
@@ -165,9 +239,9 @@ export default React.createClass({
       let base64Image = arrayBufferToBase64(this.response);
 
       that.setState({
-        filename: path.basename(url),
-        base64  : base64Image,
-        dataUri : `data:;base64,${base64Image}`
+        filename       : path.basename(url),
+        dataUri        : `data:;base64,${base64Image}`,
+        originalDataUri: `data:;base64,${base64Image}`
       });
     };
 
@@ -178,9 +252,8 @@ export default React.createClass({
 
   awsImageUpload() {
     const xhr = new XMLHttpRequest;
-    const data = base64ToArrayBuffer(this.state.base64);
+    const data = base64ToArrayBuffer(this.base64Image());
     const extension = path.extname(this.state.filename) || '.png';
-    console.log(extension);
     let contentType;
 
     switch (extension) {
@@ -189,7 +262,6 @@ export default React.createClass({
         contentType = 'image/jpg';
         break;
       case '.png':
-        console.log('png detected!');
         contentType = 'image/png';
         break;
       case '.svg':
@@ -209,5 +281,9 @@ export default React.createClass({
     };
 
     xhr.send(data);
+  },
+
+  base64Image () {
+    return this.state.dataUri.replace(/data:(.*?);base64,/, '');
   }
 });
