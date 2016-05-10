@@ -1,7 +1,7 @@
 import React from 'react';
 import path from 'path';
 import { imagesUrl } from '../../../util/aws';
-import { arrayBufferToBase64, base64ToArrayBuffer } from '../../../util';
+import { md5, arrayBufferToBase64, base64ToArrayBuffer } from '../../../util';
 import '../css/editableImage.css';
 
 export default React.createClass({
@@ -36,7 +36,9 @@ export default React.createClass({
           xShift     : 0,
           xShiftValue: 50,
           yShift     : 0,
-          yShiftValue: 50
+          yShiftValue: 50,
+          currentMd5 : '',
+          lastMd5    : ''
         }
       ;
 
@@ -177,6 +179,14 @@ export default React.createClass({
   },
 
   toggleEditor (e) {
+    const done = () => {
+      this.setState({editing: !this.state.editing}, () => {
+        if (this.state.editing) {
+          this.refs.hrefEditor.focus();
+        }
+      });
+    };
+
     if (!this.state.editing) {
       //-- switching from static to editor
 
@@ -184,17 +194,12 @@ export default React.createClass({
 
       this.setWidth();
       this.setHeight();
+      done();
     } else {
       //-- switching from editor to static
 
-      this.awsImageUpload();
+      this.awsImageUpload(done);
     }
-
-    this.setState({editing: !this.state.editing}, () => {
-      if (this.state.editing) {
-        this.refs.hrefEditor.focus();
-      }
-    });
   },
 
   handleEdit (field) {
@@ -249,11 +254,16 @@ export default React.createClass({
     return 'data:;base64,'
   },
 
-  awsImageUpload() {
-    const xhr = new XMLHttpRequest;
-    const data = base64ToArrayBuffer(this.base64Image());
+  awsImageUpload(callback) {
     const extension = path.extname(this.state.filename) || '.png';
     const imageUrl = `${imagesUrl}/${this.state.altText}${extension}`;
+    const currentMd5 = md5(this.base64Image());
+
+    if (currentMd5 === this.state.lastMd5 && imageUrl === this.state.src) return;
+    this.setState({lastMd5: currentMd5});
+
+    const xhr = new XMLHttpRequest;
+    const data = base64ToArrayBuffer(this.base64Image());
     let contentType;
 
     switch (extension) {
@@ -278,8 +288,7 @@ export default React.createClass({
     xhr.setRequestHeader('content-type', contentType);
     xhr.onload = () => {
       //-- error handling?
-      debugger;
-      this.setState({src: imageUrl})
+      this.setState({src: imageUrl}, callback)
     };
 
     xhr.send(data);
