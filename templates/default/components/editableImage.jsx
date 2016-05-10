@@ -258,14 +258,18 @@ export default React.createClass({
     if (!this.state.altText) {
       //-- TODO: error handling
       console.warn('No image name, not uploading');
-      return;
+
+      //-- early exit if no image name
+      return callback();
     }
 
     const extension = path.extname(this.state.filename) || '.png';
     const imageUrl = `${imagesUrl}/${this.state.altText}${extension}`;
     const currentMd5 = md5(this.base64Image());
 
-    if (currentMd5 === this.state.lastMd5 && imageUrl === this.state.src) return;
+    //-- early exit if no change
+    if (currentMd5 === this.state.lastMd5 && imageUrl === this.state.src) return callback();
+
     this.setState({lastMd5: currentMd5});
 
     const xhr = new XMLHttpRequest;

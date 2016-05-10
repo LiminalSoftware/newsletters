@@ -1,13 +1,22 @@
+#content-container,
+td,
+li,
+p,
+a,
+div,
+span {
+    font-family: arial, sans-serif;
+    font-size:        14px;
+    line-height:      16px;
+}
+
 #content-container {
     width:            100%;
     background-color: rgb(70, 70, 70);
-    font-family:      arial, sans-serif;
-    line-height:      16px;
-    font-size:        14px;
 }
 
 #content {
-    border-width: 0;
+    border-width:     0;
     margin:           auto;
     background-color: rgb(255, 255, 255);
 }
@@ -39,12 +48,13 @@
 }
 
 #menu .item {
-    background:      rgb(255, 80, 65);
-    text-align:      center;
-    vertical-align:  middle;
-    color:           rgb(255, 255, 255);
-    font-size:       12px;
-    text-transform:  uppercase;
+    background:     rgb(255, 80, 65);
+    text-align:     center;
+    vertical-align: middle;
+    color:          rgb(255, 255, 255);
+    font-size:      12px;
+    text-transform: uppercase;
+    height: 30px;
 }
 
 #splash {
@@ -58,15 +68,27 @@
 
 #title-container {
     text-align: right;
-    font-size:     17px;
+}
+
+#title-container span,
+#title-container div,
+#title-container {
+    font-size:  17px;
 }
 
 #intro {
     padding-top: 25px;
+}
+
+#intro span,
+#intro div,
+#intro {
     font-size:   14px;
 }
 
 #intro > .greeting,
+#intro > .greeting p,
+.entry .title a,
 .entry .title {
     font-size: 16px;
 }
@@ -76,15 +98,20 @@
 }
 
 .divider > td {
-    border-bottom:  1px solid #C7C7C7;
+    border-bottom: 1px solid #C7C7C7;
 }
 
 .tag {
     color:            rgb(255, 255, 255);
     background-color: rgb(255, 80, 65);
     text-transform:   uppercase;
+    padding:          3px;
+}
+
+.tag span,
+.tag div,
+.tag {
     font-size:        12px;
-    padding: 3px;
 }
 
 .entry {
@@ -110,8 +137,8 @@
 }
 
 .entry .image {
-    width:       280px;
-    height:      200px;
+    width:  280px;
+    height: 200px;
 }
 
 .entry .image img {
@@ -140,7 +167,7 @@
     color:          rgb(135, 135, 140);
     text-align:     center;
     padding-bottom: 20px;
-    margin-top: 20px;
+    margin-top:     20px;
 }
 
 #unsubscribe a,

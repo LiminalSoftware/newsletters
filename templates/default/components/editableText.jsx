@@ -10,7 +10,8 @@ let EditableText = React.createClass({
       height      : '',
       expandWidth : Number(this.props.expandWidth) || 0,
       expandHeight: Number(this.props.expandHeight) || 10,
-      markdown    : this.props.markdown === 'false' ? false : true
+      markdown    : this.props.markdown === 'false' ? false : true,
+      className   : this.props.className
     }
   },
 
@@ -27,6 +28,7 @@ let EditableText = React.createClass({
     if (this.state.markdown || this.state.editing) {
       return (
         <div
+          className={this.state.className}
           ref="text"
           onClick={this.toggleEditor}
           dangerouslySetInnerHTML={{__html:
@@ -36,6 +38,7 @@ let EditableText = React.createClass({
       )
     } else {
       return ( <span
+          className={this.state.className}
           ref="text"
           onClick={this.toggleEditor}
         >
@@ -76,7 +79,7 @@ let EditableText = React.createClass({
   handleEdit (e) {
     this.props.dispatch({
       type: 'UPDATE_TEXT',
-      id: this.props.id,
+      id  : this.props.id,
       text: e.target.value
     })
   },

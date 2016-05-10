@@ -58,10 +58,10 @@ const DefaultTemplatePres = ({
               <tbody>
               <tr>
                 <td id="menu">
-                  <table width="100%" height="30px">
+                  <table width="100%">
                     <tbody>
                     <tr>
-                      <td className="item" width="1.66%">
+                      <td className="item" width="1.66%" height="30px">
                         <a className="item" target="_blank" href="http://beeftea.de/">Home</a>
                       </td>
                       <td className="item" width="1.66%">
