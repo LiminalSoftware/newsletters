@@ -220,12 +220,10 @@ export default React.createClass({
         filename       : file.name,
         dataUri        : e.target.result,
         originalDataUri: e.target.result
-      })
+      }, this.toggleEditor)
     };
 
     reader.readAsDataURL(file);
-
-    this.toggleEditor();
   },
 
   download (url) {
