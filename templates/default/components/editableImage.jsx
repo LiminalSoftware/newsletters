@@ -24,6 +24,7 @@ export default React.createClass({
 
     let defaults = {
           ...copiedProps,
+          src        : '',
           dataUri    : this.download(this.props.src),
           editing    : false,
           width      : '',
@@ -55,7 +56,7 @@ export default React.createClass({
         <img
           ref="image"
           onClick={this.toggleEditor}
-          src={this.state.dataUri}
+          src={this.state.src || this.state.dataUri}
           alt={this.state.altText || ''}
         /></a>
     )
@@ -252,6 +253,7 @@ export default React.createClass({
     const xhr = new XMLHttpRequest;
     const data = base64ToArrayBuffer(this.base64Image());
     const extension = path.extname(this.state.filename) || '.png';
+    const imageUrl = `${imagesUrl}/${this.state.altText}${extension}`;
     let contentType;
 
     switch (extension) {
@@ -272,10 +274,12 @@ export default React.createClass({
         console.error('unsupported image type!');
     }
 
-    xhr.open('PUT', `${imagesUrl}/${this.state.altText}${extension}`, true);
+    xhr.open('PUT', imageUrl, true);
     xhr.setRequestHeader('content-type', contentType);
     xhr.onload = () => {
       //-- error handling?
+      debugger;
+      this.setState({src: imageUrl})
     };
 
     xhr.send(data);
