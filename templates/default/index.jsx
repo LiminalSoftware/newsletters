@@ -24,14 +24,22 @@ const DefaultTemplatePres = ({
                   <EditableLink {...links.onlineVersion} />
                 </td>
                 <td width="46.66%" id="social-links">
-                  <EditableImage vspace="6" hspace="6" width="17" height="17"
-                                 src="templates/default/img/fb.png"></EditableImage>
-                  <EditableImage vspace="6" hspace="6" width="17" height="17"
-                                 src="templates/default/img/youtube.png"></EditableImage>
-                  <EditableImage vspace="6" hspace="6" width="17" height="17"
-                                 src="templates/default/img/gplus.png"></EditableImage>
-                  <EditableImage vspace="6" hspace="6" width="17" height="17"
-                                 src="templates/default/img/twitter.png"></EditableImage>
+                  <a href="https://www.facebook.com/BEEFTEA-GROUP-people-brand-communications-GmbH-132860193942/">
+                    <img vspace="6" hspace="6" width="17" height="17"
+                         src="http://hosted.liminal.software/beeftea/newsletters/templates/default/img/fb.png"/>
+                  </a>
+                  <a href="https://www.youtube.com/user/beefteatv">
+                    <img vspace="6" hspace="6" width="17" height="17"
+                         src="http://hosted.liminal.software/beeftea/newsletters/templates/default/img/youtube.png"/>
+                  </a>
+                  <a href="https://plus.google.com/112346036968033683028/posts">
+                    <img vspace="6" hspace="6" width="17" height="17"
+                         src="http://hosted.liminal.software/beeftea/newsletters/templates/default/img/gplus.png"/>
+                  </a>
+                  <a href="https://twitter.com/beefteagroup">
+                    <img vspace="6" hspace="6" width="17" height="17"
+                         src="http://hosted.liminal.software/beeftea/newsletters/templates/default/img/twitter.png"/>
+                  </a>
                 </td>
                 <td width="20px">&nbsp;</td>
               </tr>
@@ -45,7 +53,7 @@ const DefaultTemplatePres = ({
               <tbody>
               <tr>
                 <td id="logo" height="60px">
-                  <EditableImage src="templates/default/img/logo.png" alt="beeftea-logo"/>
+                  <img src="http://hosted.liminal.software/beeftea/newsletters/templates/default/img/logo.png" alt="beeftea-logo"/>
                 </td>
               </tr>
               </tbody>
@@ -269,6 +277,7 @@ const DefaultTemplatePres = ({
                         </table>
                         <div id="unsubscribe">
                           Wenn Sie unseren Newsletter nicht mehr erhalten möchten, melden Sie sich bitte
+                          {' '}
                           <EditableLink {...links.unsubscribe} />.
                         </div>
                       </td>

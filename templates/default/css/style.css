@@ -6,8 +6,8 @@ a,
 div,
 span {
     font-family: arial, sans-serif;
-    font-size:        14px;
-    line-height:      16px;
+    font-size:   14px;
+    line-height: 16px;
 }
 
 #content-container {
@@ -54,7 +54,7 @@ span {
     color:          rgb(255, 255, 255);
     font-size:      12px;
     text-transform: uppercase;
-    height: 30px;
+    height:         30px;
 }
 
 #splash {
@@ -73,7 +73,7 @@ span {
 #title-container span,
 #title-container div,
 #title-container {
-    font-size:  17px;
+    font-size: 17px;
 }
 
 #intro {
@@ -83,7 +83,7 @@ span {
 #intro span,
 #intro div,
 #intro {
-    font-size:   14px;
+    font-size: 14px;
 }
 
 #intro > .greeting,
@@ -111,7 +111,7 @@ span {
 .tag span,
 .tag div,
 .tag {
-    font-size:        12px;
+    font-size: 12px;
 }
 
 .entry {
@@ -163,11 +163,16 @@ span {
 }
 
 #footer #unsubscribe {
-    font-size:      11px;
     color:          rgb(135, 135, 140);
     text-align:     center;
     padding-bottom: 20px;
     margin-top:     20px;
+}
+
+#footer #unsubscribe a,
+#footer #unsubscribe {
+    font-size: 11px;
+
 }
 
 #unsubscribe a,
