@@ -131,7 +131,7 @@ const DefaultTemplatePres = ({
                         <table>
                           <tbody>
                           <tr>
-                            <td>
+                            <td width="300px">
                               <table cellPadding="3px">
                                 <tbody>
                                 <tr>
@@ -167,7 +167,7 @@ const DefaultTemplatePres = ({
                         <table>
                           <tbody>
                           <tr>
-                            <td>
+                            <td width="300px">
                               <table cellPadding="3px">
                                 <tbody>
                                 <tr>
@@ -203,7 +203,7 @@ const DefaultTemplatePres = ({
                         <table>
                           <tbody>
                           <tr>
-                            <td>
+                            <td width="300px">
                               <table cellPadding="3px">
                                 <tbody>
                                 <tr>
