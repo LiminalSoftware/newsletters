@@ -1,6 +1,20 @@
 import { findInCollection } from '../util'
+const date = new Date();
+const  dateString = `${date.getDate()}/${date.getMonth() + 1}`;
 
 const defaultTextState = {
+  titlePart1: {
+    id: 'title-part-1',
+    text: 'trend'
+  },
+  titlePart2: {
+    id: 'title-part-2',
+    text: 'flash'
+  },
+  titleDate: {
+    id: 'title-date',
+    text: dateString
+  },
   greeting: {
     id  : 'greeting-text',
     text: 'Hallo Grunszky'

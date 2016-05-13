@@ -1,35 +1,35 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import EditableText from './editableText.jsx';
 
-export default React.createClass({
-  getInitialState() {
-    let date = new Date()
-      ;
-
-    return {
-      date: `${date.getDate()}/${date.getMonth() + 1}`
-    }
-  },
-
+let Title = React.createClass({
   render () {
     return (
       <div id="title-container">
         <EditableText
-          text="trend"
+          {...this.props.titlePart1}
           markdown="false"
           expandWidth={10}
         /><span className="highlight-text">
         <EditableText
-          text="flash"
+          {...this.props.titlePart2}
           markdown="false"
           expandWidth={10}
         />
       </span> <EditableText
-        text={this.state.date}
+        {...this.props.titleDate}
         markdown="false"
         expandWidth={10}
       />
       </div>
     )
   }
-})
+});
+
+Title = connect(
+  ({ stickyHeader: { defaultTemplate: { texts } } }) => {
+    return texts;
+  }
+)(Title);
+
+export default Title;

@@ -10,7 +10,7 @@ let EditableText = React.createClass({
       height      : '',
       expandWidth : Number(this.props.expandWidth) || 0,
       expandHeight: Number(this.props.expandHeight) || 10,
-      markdown    : this.props.markdown === 'false' ? false : true,
+      markdown    : this.props.markdown !== 'false',
       className   : this.props.className
     }
   },
@@ -69,7 +69,7 @@ let EditableText = React.createClass({
       e.preventDefault();
     }
 
-    this.setState({editing: !this.state.editing}, () => {
+    this.setState({ editing: !this.state.editing }, () => {
       if (this.state.editing) {
         this.refs.editor.focus();
       }
@@ -85,11 +85,11 @@ let EditableText = React.createClass({
   },
 
   setWidth () {
-    this.setState({width: this.refs.text.offsetWidth});
+    this.setState({ width: this.refs.text.offsetWidth });
   },
 
   setHeight () {
-    this.setState({height: this.refs.text.offsetHeight});
+    this.setState({ height: this.refs.text.offsetHeight });
   }
 });
 
