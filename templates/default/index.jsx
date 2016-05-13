@@ -14,8 +14,7 @@ const DefaultTemplatePres = ({
     <table id="content-container">
       <tbody>
       <tr>
-        <td>
-
+        <td data-align="center">
           <table id="content" width="640" cellPadding="0" cellSpacing="0">
             <tbody>
             <tr>

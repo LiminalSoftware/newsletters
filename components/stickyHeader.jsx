@@ -19,7 +19,7 @@ const juice  = require('juice/client')
           var binStr = new Array(i);
 
           while (i--) {
-            binStr[i] = String.fromCharCode(arr[i]);
+            binStr[ i ] = String.fromCharCode(arr[ i ]);
           }
 
           var data = binStr.join('');
@@ -76,13 +76,13 @@ let StickyHeader = React.createClass({
                   <Button onClick={this.save(this.state.saveName)}>Save</Button>
                 </MenuItem>
                 <MenuItem divider/>
-                { Object.keys(this.props.saves).map( (name) => {
-                  return <MenuItem key={name} onClick={this.save(name)} >{name}</MenuItem>
+                { Object.keys(this.props.saves).map((name) => {
+                  return <MenuItem key={name} onClick={this.save(name)}>{name}</MenuItem>
                 }) }
               </NavDropdown>
               <NavDropdown eventKey={5} title="Load" id="nav-dropdown-load">
-                { Object.keys(this.props.saves).map( (name) => {
-                  return <MenuItem key={name} onClick={this.load(name)} >{name}</MenuItem>
+                { Object.keys(this.props.saves).map((name) => {
+                  return <MenuItem key={name} onClick={this.load(name)}>{name}</MenuItem>
                 }) }
               </NavDropdown>
             </Nav>
@@ -106,7 +106,7 @@ let StickyHeader = React.createClass({
 
   saveDropdownToggle (open) {
     const keepFocusElement = findDOMNode(this.refs.keepFocus);
-    const keepFocusChildren = [].slice.apply(keepFocusElement.children[0].children);
+    const keepFocusChildren = [].slice.apply(keepFocusElement.children[ 0 ].children);
     const keepFocus = keepFocusChildren.some(e => {
       return document.activeElement === e
     });
@@ -120,7 +120,7 @@ let StickyHeader = React.createClass({
   },
 
   updateSaveName (e) {
-    this.setState({saveName: e.target.value})
+    this.setState({ saveName: e.target.value })
   },
 
   copyHtml () {
@@ -130,24 +130,24 @@ let StickyHeader = React.createClass({
       ;
 
     download(cssUrl, (css) => {
-      let styleElements = [].slice.apply(document.querySelectorAll('style'))
-        , styles        = styleElements.reduce((previous, current) => {
-            return previous.innerHTML + '\n\n' + current.innerHTML;
-          })
-        , text          = juice.inlineContent(
-        document.querySelector(
-          that.state.rootSelector
-        ).outerHTML,
-            styles + '\n\n' + css
-          )
-        ;
+      const html = this.html4ize(document.querySelector(
+        that.state.rootSelector
+      ).outerHTML);
+      const styleElements = [].slice.apply(document.querySelectorAll('style'));
+      const styles = styleElements.reduce((previous, current) => {
+        return previous.innerHTML + '\n\n' + current.innerHTML;
+      });
+      const text = juice.inlineContent(
+        html,
+        styles + '\n\n' + css
+      );
 
       that.setState({
         copyText     : that.wrap(text),
         dialogOpacity: 1
       }, () => {
         setTimeout(() => {
-          that.setState({dialogOpacity: 0});
+          that.setState({ dialogOpacity: 0 });
         }, 5000);
       });
 
@@ -158,10 +158,24 @@ let StickyHeader = React.createClass({
   },
 
   wrap (text) {
-    let wrapper = require('../templates/default/wrapper.html')
-      ;
+    let wrapper = require('../templates/default/wrapper.html');
 
     return wrapper.replace(/.*?<!-- insert -->/, text);
+  },
+
+  html4ize (html) {
+    const attributes = [ 'align' ];
+    let result;
+
+    attributes.forEach(attribute => {
+      debugger;
+      result = html.replace(new RegExp(`data-${attribute}\\s*?=\\s*?['"](\\w+)['"]`, 'g'), (match, value) => {
+        debugger;
+        return `${attribute}="${value}"`
+      })
+    });
+
+    return result;
   },
 
   save (name) {
@@ -183,8 +197,8 @@ let StickyHeader = React.createClass({
   }
 });
 
-StickyHeader = connect(({ stickyHeader: {saves} }) => {
-  return {saves};
+StickyHeader = connect(({ stickyHeader: { saves } }) => {
+  return { saves };
 })(StickyHeader);
 
 export default StickyHeader;
