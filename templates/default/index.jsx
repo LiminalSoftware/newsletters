@@ -81,7 +81,7 @@ const DefaultTemplatePres = ({
                                href="http://beeftea.de/beeftea-group-vier-units-fur-eine-gemeinsame-sache/">Units</a>
                           </td>
                           <td className="item" width="1.66%">
-                            <a className="item" target="_blank" href="http://beeftea.de/leistungen/">Leistengen</a>
+                            <a className="item" target="_blank" href="http://beeftea.de/leistungen/">Leistungen</a>
                           </td>
                           <td className="item" width="1.66%">
                             <a className="item" target="_blank" href="http://beeftea.de/jobs/">Jobs</a>
@@ -120,7 +120,7 @@ const DefaultTemplatePres = ({
                         <tbody>
                         <tr>
                           <td>
-                            <Title text={texts} />
+                            <Title text={texts}/>
                           </td>
                         </tr>
                         <tr>
@@ -143,7 +143,7 @@ const DefaultTemplatePres = ({
                             <table>
                               <tbody>
                               <tr>
-                                <td width="300px">
+                                <td>
                                   <table cellPadding="3px">
                                     <tbody>
                                     <tr>
@@ -153,6 +153,10 @@ const DefaultTemplatePres = ({
                                     </tr>
                                     </tbody>
                                   </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td width="300px">
                                   <div className="title">
                                     <EditableLink {...links.titleLink1} />
                                   </div>
@@ -160,7 +164,18 @@ const DefaultTemplatePres = ({
                                 </td>
                                 <td width="20px">&nbsp;</td>
                                 <td width="280px">
-                                  <EditableImage src="templates/default/img/280x200.png"/>
+                                  <table width="100%">
+                                    <tbody>
+                                    <tr>
+                                      <td height="15px"></td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <EditableImage src="templates/default/img/280x200.png"/>
+                                      </td>
+                                    </tr>
+                                    </tbody>
+                                  </table>
                                 </td>
                               </tr>
                               </tbody>
@@ -179,7 +194,7 @@ const DefaultTemplatePres = ({
                             <table>
                               <tbody>
                               <tr>
-                                <td width="300px">
+                                <td>
                                   <table cellPadding="3px">
                                     <tbody>
                                     <tr>
@@ -189,6 +204,10 @@ const DefaultTemplatePres = ({
                                     </tr>
                                     </tbody>
                                   </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td width="300px">
                                   <div className="title">
                                     <EditableLink {...links.titleLink2} />
                                   </div>
@@ -196,7 +215,18 @@ const DefaultTemplatePres = ({
                                 </td>
                                 <td width="20px">&nbsp;</td>
                                 <td width="280px">
-                                  <EditableImage src="templates/default/img/280x200.png"/>
+                                  <table width="100%">
+                                    <tbody>
+                                    <tr>
+                                      <td height="15px"></td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <EditableImage src="templates/default/img/280x200.png"/>
+                                      </td>
+                                    </tr>
+                                    </tbody>
+                                  </table>
                                 </td>
                               </tr>
                               </tbody>
@@ -215,7 +245,7 @@ const DefaultTemplatePres = ({
                             <table>
                               <tbody>
                               <tr>
-                                <td width="300px">
+                                <td>
                                   <table cellPadding="3px">
                                     <tbody>
                                     <tr>
@@ -225,6 +255,10 @@ const DefaultTemplatePres = ({
                                     </tr>
                                     </tbody>
                                   </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td width="300px">
                                   <div className="title">
                                     <EditableLink {...links.titleLink3} />
                                   </div>
@@ -232,7 +266,18 @@ const DefaultTemplatePres = ({
                                 </td>
                                 <td width="20px">&nbsp;</td>
                                 <td width="280px">
-                                  <EditableImage src="templates/default/img/280x200.png"/>
+                                  <table width="100%">
+                                    <tbody>
+                                    <tr>
+                                      <td height="15px"></td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <EditableImage src="templates/default/img/280x200.png"/>
+                                      </td>
+                                    </tr>
+                                    </tbody>
+                                  </table>
                                 </td>
                               </tr>
                               </tbody>
@@ -249,8 +294,7 @@ const DefaultTemplatePres = ({
                         <tr>
                           <td id="footer">
                             <div className="copyright">
-                              <div className="highlight-text">© 2014 BEEFTEA group</div>
-                              people & brand communications GmbH
+                              <div className="highlight-text">BEEFTEA Live</div>
                             </div>
                             <table width="100%">
                               <tbody>
