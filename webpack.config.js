@@ -29,7 +29,11 @@ module.exports = {
 
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        loader: 'style!css'
+      },
+      {
+        test: /\.less$/,
+        loader: 'style!css!less'
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
@@ -80,6 +84,10 @@ module.exports = {
       {
         from: 'templates/default/img',
         to: 'templates/default/img'
+      },
+      {
+        from: 'templates/eventIsland/img',
+        to: 'templates/eventIsland/img'
       }
     ])
   ]

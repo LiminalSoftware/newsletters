@@ -6,12 +6,12 @@ import EditableLink from './components/editableLink.jsx';
 import EditableImage from './components/editableImage.jsx';
 require('./css/style.less');
 
-let DefaultTemplate = ({
+let EventIslandTemplate = ({
   links,
   texts
 }) => {
   return (
-    <table id="content-container" className="beeftea">
+    <table id="content-container" className="event-island">
       <tbody>
       <tr>
         <td data-align="center">
@@ -23,28 +23,9 @@ let DefaultTemplate = ({
                   <tbody>
                   <tr>
                     <td width="20px">&nbsp;</td>
-                    <td width="46.66%">
+                    <td>
                       <EditableLink {...links.onlineVersion} />
                     </td>
-                    <td width="46.66%" id="social-links">
-                      <a href="https://www.facebook.com/BEEFTEA-GROUP-people-brand-communications-GmbH-132860193942/">
-                        <img vspace="6" hspace="6" width="17" height="17"
-                             src="http://hosted.liminal.software/beeftea/newsletters/templates/default/img/fb.png"/>
-                      </a>
-                      <a href="https://www.youtube.com/user/beefteatv">
-                        <img vspace="6" hspace="6" width="17" height="17"
-                             src="http://hosted.liminal.software/beeftea/newsletters/templates/default/img/youtube.png"/>
-                      </a>
-                      <a href="https://plus.google.com/112346036968033683028/posts">
-                        <img vspace="6" hspace="6" width="17" height="17"
-                             src="http://hosted.liminal.software/beeftea/newsletters/templates/default/img/gplus.png"/>
-                      </a>
-                      <a href="https://twitter.com/beefteagroup">
-                        <img vspace="6" hspace="6" width="17" height="17"
-                             src="http://hosted.liminal.software/beeftea/newsletters/templates/default/img/twitter.png"/>
-                      </a>
-                    </td>
-                    <td width="20px">&nbsp;</td>
                   </tr>
                   </tbody>
                 </table>
@@ -55,9 +36,9 @@ let DefaultTemplate = ({
                 <table width="100%">
                   <tbody>
                   <tr>
-                    <td id="logo" height="60px">
-                      <img src="http://hosted.liminal.software/beeftea/newsletters/templates/default/img/logo.png"
-                           alt="beeftea-logo"/>
+                    <td id="logo" height="133px">
+                      <img src="http://hosted.liminal.software/beeftea/newsletters/templates/eventIsland/img/logo.png"
+                           alt="event-island-logo"/>
                     </td>
                   </tr>
                   </tbody>
@@ -70,27 +51,24 @@ let DefaultTemplate = ({
                   <tbody>
                   <tr>
                     <td id="menu">
-                      <table width="100%">
+                      <table width="100%" cellspacing="2px">
                         <tbody>
                         <tr>
                           <td className="item" width="1.66%" height="30px">
-                            <a className="item" target="_blank" href="http://beeftea.de/">Home</a>
+                            <a className="item" target="_blank" href="http://www.eventisland.de/">über uns</a>
                           </td>
                           <td className="item" width="1.66%">
                             <a className="item" target="_blank"
-                               href="http://beeftea.de/beeftea-group-vier-units-fur-eine-gemeinsame-sache/">Units</a>
+                               href="http://www.eventisland.de/leistungen/">leistungen</a>
                           </td>
                           <td className="item" width="1.66%">
-                            <a className="item" target="_blank" href="http://beeftea.de/leistungen/">Leistungen</a>
+                            <a className="item" target="_blank" href="http://www.eventisland.de/referenzen/">referenzen</a>
                           </td>
                           <td className="item" width="1.66%">
-                            <a className="item" target="_blank" href="http://beeftea.de/jobs/">Jobs</a>
+                            <a className="item" target="_blank" href="http://www.eventisland.de/kontakt-anfahrt/">anfahr/kontakt</a>
                           </td>
                           <td className="item" width="1.66%">
-                            <a className="item" target="_blank" href="http://beeftea.de/meeting/">Kalender</a>
-                          </td>
-                          <td className="item" width="1.66%">
-                            <a className="item" target="_blank" href="http://beeftea.de/kontakt/">Kontakt</a>
+                            <a className="item" target="_blank" href="http://www.eventisland.de/category/news/">news/presse</a>
                           </td>
                         </tr>
                         </tbody>
@@ -294,30 +272,20 @@ let DefaultTemplate = ({
                         <tr>
                           <td id="footer">
                             <div className="copyright">
-                              <div className="highlight-text">BEEFTEA Live</div>
+                              <div className="highlight-text">BEEFTEA Local</div>
                             </div>
                             <table width="100%">
                               <tbody>
                               <tr height="20px"></tr>
                               <tr>
-                                <td width="50%">
-                                  <div id="footer-left">
+                                <td data-align="center">
+                                  <div id="footer-center">
                                     Kreuzbergstraße 30 | D-10965 Berlin
                                     <br />
-                                    T 030 26 93 92-3 | F 030 26 93 92-40
+                                    T +49 30 600 318 32 | F +49 30 600 318 39
                                     <br />
                                     <a href="mailto:berlin@beeftea.de">berlin@beeftea.de</a> | <a
-                                    href="http://www.beeftea.de">www.beeftea.de</a>
-                                  </div>
-                                </td>
-                                <td width="50%">
-                                  <div id="footer-right">
-                                    Lehmweg 10C | D-20251 Hamburg
-                                    <br />
-                                    T 040 32 89 01 56-1 | F 030 26 93 92-40
-                                    <br />
-                                    <a href="mailto:berlin@beeftea.de">berlin@beeftea.de</a> | <a
-                                    href="http://www.beeftea.de">www.beeftea.de</a>
+                                    href="http://www.eventisland.de/">www.eventisland.de/</a>
                                   </div>
                                 </td>
                               </tr>
@@ -349,10 +317,14 @@ let DefaultTemplate = ({
   )
 };
 
-DefaultTemplate = connect(
-  ({ stickyHeader: { defaultTemplate }, aws: { images } }) => {
-    return { ...defaultTemplate, images };
-  }
-)(DefaultTemplate);
+EventIslandTemplate.propTypes = {
+  links: PropTypes.object
+};
 
-export default DefaultTemplate;
+EventIslandTemplate = connect(
+  ({ stickyHeader: { eventIslandTemplate }, aws: { images } }) => {
+    return { ...eventIslandTemplate, images };
+  }
+)(EventIslandTemplate);
+
+export default EventIslandTemplate;

@@ -1,4 +1,6 @@
 import defaultTemplate from './defaultTemplate';
+import selectedTemplate from './selectedTemplate';
+import templateOptions from './templateOptions';
 import saves from './saves';
 
 const LOCAL_STORAGE_KEY = 'liminal.newsletters';
@@ -19,7 +21,7 @@ const stickyHeader = (state = {}, action) => {
         saves: saves(state.saves, action)
       };
     case 'LOAD_STATE':
-      const parsedState = parseStored()[action.name];
+      const parsedState = parseStored()[ action.name ];
       return {
         ...state,
         defaultTemplate: defaultTemplate(parsedState, action)
@@ -27,8 +29,11 @@ const stickyHeader = (state = {}, action) => {
     default:
       return {
         ...state,
-        saves          : saves(state.saves, action),
-        defaultTemplate: defaultTemplate(state.defaultTemplate, action)
+        saves              : saves(state.saves, action),
+        defaultTemplate    : defaultTemplate(state.defaultTemplate, action),
+        eventIslandTemplate: defaultTemplate(state.eventIslandTemplate, action),
+        selectedTemplate   : selectedTemplate(state.selectedTemplate, action),
+        availableTemplates : templateOptions
       };
   }
 };

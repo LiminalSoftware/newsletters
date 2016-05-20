@@ -58,12 +58,20 @@ let StickyHeader = React.createClass({
             <Navbar.Form pullLeft>
               <Button bsStyle="primary" onClick={this.copyHtml}>Copy HTML</Button>
             </Navbar.Form>
+            <Nav bsStyle="pills">
+              <NavDropdown title="Select Template" id="nav-dropdown-seleect-template">
+                { this.props.availableTemplates.map((template) => {
+                  return <MenuItem key={template.name}
+                                   onClick={this.changeTemplate(template.name)}>{template.text}</MenuItem>
+                }) }
+              </NavDropdown>
+            </Nav>
             <Navbar.Form pullRight>
               <Button bsStyle="danger">
                 Clear
               </Button>
             </Navbar.Form>
-            <Nav pullRight bsStyle="pills" pullRight>
+            <Nav pullRight bsStyle="pills">
               <NavDropdown
                 open={this.state.saveDropdown.open}
                 onToggle={this.saveDropdownToggle}
@@ -80,7 +88,7 @@ let StickyHeader = React.createClass({
                   return <MenuItem key={name} onClick={this.save(name)}>{name}</MenuItem>
                 }) }
               </NavDropdown>
-              <NavDropdown eventKey={5} title="Load" id="nav-dropdown-load">
+              <NavDropdown title="Load" id="nav-dropdown-load">
                 { Object.keys(this.props.saves).map((name) => {
                   return <MenuItem key={name} onClick={this.load(name)}>{name}</MenuItem>
                 }) }
@@ -102,6 +110,15 @@ let StickyHeader = React.createClass({
         </Navbar>
       </div>
     )
+  },
+
+  changeTemplate (templateName) {
+    return (e) => {
+      this.props.dispatch({
+        type: 'CHANGE_TEMPLATE',
+        templateName
+      })
+    }
   },
 
   saveDropdownToggle (open) {
@@ -197,8 +214,8 @@ let StickyHeader = React.createClass({
   }
 });
 
-StickyHeader = connect(({ stickyHeader: { saves } }) => {
-  return { saves };
+StickyHeader = connect(({ stickyHeader: { saves, availableTemplates } }) => {
+  return { saves, availableTemplates };
 })(StickyHeader);
 
 export default StickyHeader;

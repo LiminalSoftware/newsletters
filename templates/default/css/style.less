@@ -1,197 +1,201 @@
-#content-container,
-td,
-li,
-p,
-a,
-div,
-span {
+@primary_color: rgb(255, 80, 65);
+
+.beeftea {
+  &#content-container,
+  td,
+  li,
+  p,
+  a,
+  div,
+  span {
     font-family: arial, sans-serif;
     font-size:   14px;
     line-height: 18px;
-}
+  }
 
-#content-container {
+  &#content-container {
     width:            100%;
     background-color: rgb(70, 70, 70);
-}
+  }
 
-#content {
-    width: 640px;
+  #content {
+    width:            640px;
     border-width:     0;
     margin:           auto;
     background-color: rgb(255, 255, 255);
-}
+  }
 
-#header {
+  #header {
     padding-top: 1px;
-}
+  }
 
-#online-version,
-#online-version:hover,
-#online-version:visited {
+  #online-version,
+  #online-version:hover,
+  #online-version:visited {
     color:           rgb(51, 51, 51);
     font-size:       11px;
     text-decoration: underline;
-}
+  }
 
-#social-links {
+  #social-links {
     text-align: right;
-}
+  }
 
-#social-links img {
+  #social-links img {
     padding: 2px;
-}
+  }
 
-#logo {
+  #logo {
     /*margin:     10px 0;*/
     text-align: center;
     /*vertical-align: middle;*/
-}
+  }
 
-#menu .item {
-    background:     rgb(255, 80, 65);
+  #menu .item {
+    background:     @primary_color;
     text-align:     center;
     vertical-align: middle;
     color:          rgb(255, 255, 255);
     font-size:      12px;
     text-transform: uppercase;
     height:         30px;
-}
+  }
 
-#splash {
+  #splash {
     margin-bottom: 20px;
-}
+  }
 
-#body {
+  #body {
     position: relative;
     padding:  0 20px;
-}
+  }
 
-#title-container {
+  #title-container {
     text-align: right;
-}
+  }
 
-#title-container span,
-#title-container div,
-#title-container {
+  #title-container span,
+  #title-container div,
+  #title-container {
     font-size: 17px;
-}
+  }
 
-#intro {
+  #intro {
     padding-top: 25px;
-}
+  }
 
-#intro span,
-#intro div,
-#intro {
+  #intro span,
+  #intro div,
+  #intro {
     font-size: 14px;
-}
+  }
 
-#intro > .greeting,
-#intro > .greeting p,
-.entry .title a,
-.entry .title {
+  #intro > .greeting,
+  #intro > .greeting p,
+  .entry .title a,
+  .entry .title {
     font-size: 16px;
-}
+  }
 
-.divider {
+  .divider {
     height: 30px;
-}
+  }
 
-.divider > td {
+  .divider > td {
     border-bottom: 1px solid #C7C7C7;
-}
+  }
 
-.tag {
+  .tag {
     color:            rgb(255, 255, 255);
-    background-color: rgb(255, 80, 65);
+    background-color: @primary_color;
     text-transform:   uppercase;
     padding:          3px;
-}
+  }
 
-.tag span,
-.tag div,
-.tag {
+  .tag span,
+  .tag div,
+  .tag {
     font-size: 12px;
-}
+  }
 
-.entry {
+  .entry {
     min-height: 190px;
-}
+  }
 
-.entry > table > tbody > tr > td {
+  .entry > table > tbody > tr > td {
     vertical-align: top;
-}
+  }
 
-.entry .title {
+  .entry .title {
     margin: 15px 0;
-}
+  }
 
-.entry p a,
-.entry p a:hover,
-.entry p a:visited,
-#footer a,
-#footer a:hover,
-#footer a:visited {
+  .entry p a,
+  .entry p a:hover,
+  .entry p a:visited,
+  #footer a,
+  #footer a:hover,
+  #footer a:visited {
     color:           rgb(51, 51, 51);
     text-decoration: underline;
-}
+  }
 
-.entry .image {
+  .entry .image {
     width:  280px;
     height: 200px;
-}
+  }
 
-.entry .image img {
+  .entry .image img {
     border-radius: 15px;
-}
+  }
 
-#footer .copyright {
+  #footer .copyright {
     text-align: center;
-}
+  }
 
-#footer .copyright > .highlight-text {
+  #footer .copyright > .highlight-text {
     font-size: 16px;
-}
+  }
 
-#footer-left,
-#footer-right {
-}
+  #footer-left,
+  #footer-right {
+  }
 
-#footer-left {
+  #footer-left {
     margin-right: 20px;
     text-align:   right;
-}
+  }
 
-#footer #unsubscribe {
+  #footer #unsubscribe {
     color:          rgb(135, 135, 140);
     text-align:     center;
     padding-bottom: 20px;
     margin-top:     20px;
-}
+  }
 
-#footer #unsubscribe a,
-#footer #unsubscribe {
+  #footer #unsubscribe a,
+  #footer #unsubscribe {
     font-size: 11px;
 
-}
+  }
 
-#unsubscribe a,
-#unsubscribe a:hover,
-#unsubscribe a:visited {
+  #unsubscribe a,
+  #unsubscribe a:hover,
+  #unsubscribe a:visited {
     color: inherit;
-}
+  }
 
-/*
- * UTILITY
- */
+  /*
+   * UTILITY
+   */
 
-.highlight-text,
-.highlight-text:hover,
-.highlight-text:visited {
-    color: rgb(255, 80, 65);
-}
+  .highlight-text,
+  .highlight-text:hover,
+  .highlight-text:visited {
+    color: @primary_color;
+  }
 
-.clear {
+  .clear {
     clear: both;
+  }
 }
