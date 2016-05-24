@@ -126,7 +126,7 @@ let EventIslandTemplate = ({
                                     <tbody>
                                     <tr>
                                       <td className="tag">
-                                        #<EditableText markdown="false" {...texts.tag1} />
+                                        <EditableText markdown="false" {...texts.tag1} />
                                       </td>
                                     </tr>
                                     </tbody>
@@ -177,7 +177,7 @@ let EventIslandTemplate = ({
                                     <tbody>
                                     <tr>
                                       <td className="tag">
-                                        #<EditableText markdown="false" {...texts.tag2} />
+                                        <EditableText markdown="false" {...texts.tag2} />
                                       </td>
                                     </tr>
                                     </tbody>
@@ -228,7 +228,7 @@ let EventIslandTemplate = ({
                                     <tbody>
                                     <tr>
                                       <td className="tag">
-                                        #<EditableText markdown="false" {...texts.tag3} />
+                                        <EditableText markdown="false" {...texts.tag3} />
                                       </td>
                                     </tr>
                                     </tbody>
@@ -272,7 +272,7 @@ let EventIslandTemplate = ({
                         <tr>
                           <td id="footer">
                             <div className="copyright">
-                              <div className="highlight-text">BEEFTEA Local</div>
+                              <div className="highlight-text">BEEFTEA Local GmbH</div>
                             </div>
                             <table width="100%">
                               <tbody>
